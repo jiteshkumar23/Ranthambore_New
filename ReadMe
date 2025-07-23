@@ -14,15 +14,9 @@ Existing PyCharm Software
 3) Clone and Trust Project
    Select New Window
 
-4) Open Ranthambore.py under Python Scripts
+4) Open Ranthambore_New.py under Python Scripts
 5) Configure Python Interpreter --> Add new interpreter --> add local
 6) OK
 7) Error will go away
 8) Go to Terminal and run following command
-9) pip install keyboard, autoit, pyautoit, pyautogui, opencv-python, Pillow
-
-
-For Daily Use :
-
-1) Fill data in config.py file
-2) Run the Ranthambore.py file
+9) pip install keyboard, autoit, pyautoit, pyautogui, opencv-python, Pillow,numpy,pyperclip
