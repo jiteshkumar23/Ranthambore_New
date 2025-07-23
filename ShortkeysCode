@@ -1,0 +1,262 @@
+[
+  {
+    "key": "alt+i",
+    "action": "javascript",
+    "id": "29827327-3c95-4a7c-9ef7-b1681f55df22",
+    "sites": "",
+    "sitesArray": [
+      ""
+    ],
+    "code": "// Find the target element using the data-date attribute\nconst targetDate = document.querySelector('[data-date=\"2025-07-24\"]');\n\nif (targetDate) {\n    targetDate.click();\n    console.log(\"Clicked on calendar date: 2025-07-21\");\n} else {\n    console.warn(\"Target date not found.\");\n}",
+    "activeInInputs": true,
+    "blacklist": false,
+    "label": "Calendar Date"
+  },
+  {
+    "key": "alt+o",
+    "activeInInputs": true,
+    "blacklist": false,
+    "action": "javascript",
+    "code": "const targetZoneName = \"Zone 6\";  // Change this to any zone label like \"Zone 6\"\n\nconst zoneCards = document.querySelectorAll(\".ticket-type\");\n\nfor (const card of zoneCards) {\n    const titleElement = card.querySelector(\".ticket-title\");\n    if (titleElement && titleElement.textContent.trim() === targetZoneName) {\n        const button = card.querySelector(\"button\");\n        if (button) {\n            button.click();\n            console.log(`✅ Clicked 'Book Now' for ${targetZoneName}`);\n        } else {\n            console.warn(`⚠️ Button not found in ${targetZoneName} card.`);\n        }\n        break;\n    }\n}",
+    "id": "86918fb4-a251-4e2e-b05b-9ac96625c9fc",
+    "sites": "",
+    "sitesArray": [
+      ""
+    ],
+    "label": "Zone 6"
+  },
+  {
+    "key": "shift+1",
+    "action": "javascript",
+    "code": "const targetZoneName = \"Zone 7\";  // Change this to any zone label like \"Zone 6\"\n\nconst zoneCards = document.querySelectorAll(\".ticket-type\");\n\nfor (const card of zoneCards) {\n    const titleElement = card.querySelector(\".ticket-title\");\n    if (titleElement && titleElement.textContent.trim() === targetZoneName) {\n        const button = card.querySelector(\"button\");\n        if (button) {\n            button.click();\n            console.log(`✅ Clicked 'Book Now' for ${targetZoneName}`);\n        } else {\n            console.warn(`⚠️ Button not found in ${targetZoneName} card.`);\n        }\n        break;\n    }\n}",
+    "activeInInputs": true,
+    "blacklist": false,
+    "label": "Zone 7",
+    "id": "9125b00e-10a7-4d0d-bffb-43a6722f1de5",
+    "sites": "",
+    "sitesArray": [
+      ""
+    ]
+  },
+  {
+    "key": "shift+[",
+    "action": "javascript",
+    "code": "const targetZoneName = \"Zone 8\";  // Change this to any zone label like \"Zone 6\"\n\nconst zoneCards = document.querySelectorAll(\".ticket-type\");\n\nfor (const card of zoneCards) {\n    const titleElement = card.querySelector(\".ticket-title\");\n    if (titleElement && titleElement.textContent.trim() === targetZoneName) {\n        const button = card.querySelector(\"button\");\n        if (button) {\n            button.click();\n            console.log(`✅ Clicked 'Book Now' for ${targetZoneName}`);\n        } else {\n            console.warn(`⚠️ Button not found in ${targetZoneName} card.`);\n        }\n        break;\n    }\n}",
+    "activeInInputs": true,
+    "blacklist": false,
+    "label": "Zone 8",
+    "id": "e8a04242-e445-4327-befc-6293287dc97e",
+    "sites": "",
+    "sitesArray": [
+      ""
+    ]
+  },
+  {
+    "key": "shift+3",
+    "action": "javascript",
+    "activeInInputs": true,
+    "blacklist": false,
+    "code": "const targetZoneName = \"Zone 9\";  // Change this to any zone label like \"Zone 6\"\n\nconst zoneCards = document.querySelectorAll(\".ticket-type\");\n\nfor (const card of zoneCards) {\n    const titleElement = card.querySelector(\".ticket-title\");\n    if (titleElement && titleElement.textContent.trim() === targetZoneName) {\n        const button = card.querySelector(\"button\");\n        if (button) {\n            button.click();\n            console.log(`✅ Clicked 'Book Now' for ${targetZoneName}`);\n        } else {\n            console.warn(`⚠️ Button not found in ${targetZoneName} card.`);\n        }\n        break;\n    }\n}",
+    "label": "Zone 9",
+    "id": "599a9e11-a64a-4a4a-865e-c3efb288aa0d",
+    "sites": "",
+    "sitesArray": [
+      ""
+    ]
+  },
+  {
+    "key": "shift+4",
+    "activeInInputs": true,
+    "blacklist": false,
+    "action": "javascript",
+    "code": "const targetZoneName = \"Zone 10\";  // Change this to any zone label like \"Zone 6\"\n\nconst zoneCards = document.querySelectorAll(\".ticket-type\");\n\nfor (const card of zoneCards) {\n    const titleElement = card.querySelector(\".ticket-title\");\n    if (titleElement && titleElement.textContent.trim() === targetZoneName) {\n        const button = card.querySelector(\"button\");\n        if (button) {\n            button.click();\n            console.log(`✅ Clicked 'Book Now' for ${targetZoneName}`);\n        } else {\n            console.warn(`⚠️ Button not found in ${targetZoneName} card.`);\n        }\n        break;\n    }\n}",
+    "label": "Zone 10",
+    "id": "0788b7ad-3b8c-4e60-8c10-214aba01ec42",
+    "sites": "",
+    "sitesArray": [
+      ""
+    ]
+  },
+  {
+    "key": "shift+0",
+    "label": "Morning Gypsy",
+    "action": "javascript",
+    "activeInInputs": true,
+    "blacklist": false,
+    "code": "document.querySelectorAll('.list-group-item.schedule-item').forEach(el => {\n    if (el.textContent.includes('Morning Gypsy')) {\n        el.removeAttribute('disabled');  // optional\n        el.click();\n    }\n});",
+    "id": "9f74ad1a-423b-4ce9-80bd-f8defc237e86",
+    "sites": "",
+    "sitesArray": [
+      ""
+    ]
+  },
+  {
+    "key": "shift+]",
+    "label": "Afternoon Gypsy",
+    "action": "javascript",
+    "code": "document.querySelectorAll('.list-group-item.schedule-item').forEach(el => {\n    if (el.textContent.includes('Afternoon Gypsy')) {\n        el.removeAttribute('disabled');  // optional\n        el.click();\n    }\n});",
+    "activeInInputs": true,
+    "blacklist": false,
+    "id": "f6dc24f1-0a8e-493f-b0b1-9e56e8f76292",
+    "sites": "",
+    "sitesArray": [
+      ""
+    ]
+  },
+  {
+    "key": "shift+w",
+    "label": "Morning Canter",
+    "action": "javascript",
+    "code": "document.querySelectorAll('.list-group-item.schedule-item').forEach(el => {\n    if (el.textContent.includes('Morning Canter')) {\n        el.removeAttribute('disabled');  // optional\n        el.click();\n    }\n});",
+    "activeInInputs": true,
+    "blacklist": false,
+    "id": "22d0f39e-3aad-4104-9b2f-9b4c74fe7585",
+    "sites": "",
+    "sitesArray": [
+      ""
+    ]
+  },
+  {
+    "key": "alt+p",
+    "label": "Afternoon Canter",
+    "action": "javascript",
+    "blacklist": false,
+    "activeInInputs": true,
+    "code": "document.querySelectorAll('.list-group-item.schedule-item').forEach(el => {\n    if (el.textContent.includes('Afternoon Canter')) {\n        el.removeAttribute('disabled');  // optional\n        el.click();\n    }\n});",
+    "id": "f93b6a63-553d-43c3-94f1-b63f6d746116",
+    "sites": "",
+    "sitesArray": [
+      ""
+    ]
+  },
+  {
+    "key": "alt+q",
+    "label": "Instructions",
+    "action": "javascript",
+    "code": "const checkbox = document.getElementById('agreeCheck');\nif (checkbox && !checkbox.checked) {\n    checkbox.checked = true;\n    checkbox.dispatchEvent(new Event('change', { bubbles: true }));\n}",
+    "activeInInputs": true,
+    "blacklist": false,
+    "id": "847d94dd-d94e-493a-b506-a4394310dcf7",
+    "sites": "",
+    "sitesArray": [
+      ""
+    ]
+  },
+  {
+    "key": "alt+r",
+    "label": "Agree And Continue",
+    "action": "javascript",
+    "blacklist": false,
+    "activeInInputs": true,
+    "code": "const agreeBtn = document.getElementById('agreeContinueBtn');\nif (agreeBtn) {\n    agreeBtn.click();\n}",
+    "id": "ea1f2a97-8a1c-4582-ba0d-98dc9f7f9abc",
+    "sites": "",
+    "sitesArray": [
+      ""
+    ]
+  },
+  {
+    "key": "alt+s",
+    "label": "Continue Button",
+    "action": "javascript",
+    "code": "const continueBtn = document.getElementById('paxDetailsContinueButton');\n\nif (continueBtn) {\n  continueBtn.click();\n  console.log('Continue button clicked successfully');\n} else {\n  console.warn('Continue button not found');\n}",
+    "activeInInputs": true,
+    "blacklist": false,
+    "id": "8b1e6495-8195-41db-be0f-11c2b6bf55d3",
+    "sites": "",
+    "sitesArray": [
+      ""
+    ]
+  },
+  {
+    "key": "shift+5",
+    "label": "Zone 1",
+    "action": "javascript",
+    "activeInInputs": true,
+    "blacklist": false,
+    "code": "const targetZoneName = \"Zone 1\"; \n\nconst zoneCards = document.querySelectorAll(\".ticket-type\");\n\nfor (const card of zoneCards) {\n    const titleElement = card.querySelector(\".ticket-title\");\n    if (titleElement && titleElement.textContent.trim() === targetZoneName) {\n        const button = card.querySelector(\"button\");\n        if (button) {\n            button.click();\n            console.log(`✅ Clicked 'Book Now' for ${targetZoneName}`);\n        } else {\n            console.warn(`⚠️ Button not found in ${targetZoneName} card.`);\n        }\n        break;\n    }\n}",
+    "id": "b7070f98-6d12-4d27-bef8-47c1548f0e82",
+    "sites": "",
+    "sitesArray": [
+      ""
+    ]
+  },
+  {
+    "label": "Zone 2",
+    "action": "javascript",
+    "key": "shift+6",
+    "code": "const targetZoneName = \"Zone 2\"; \n\nconst zoneCards = document.querySelectorAll(\".ticket-type\");\n\nfor (const card of zoneCards) {\n    const titleElement = card.querySelector(\".ticket-title\");\n    if (titleElement && titleElement.textContent.trim() === targetZoneName) {\n        const button = card.querySelector(\"button\");\n        if (button) {\n            button.click();\n            console.log(`✅ Clicked 'Book Now' for ${targetZoneName}`);\n        } else {\n            console.warn(`⚠️ Button not found in ${targetZoneName} card.`);\n        }\n        break;\n    }\n}",
+    "activeInInputs": true,
+    "blacklist": false,
+    "id": "a75139e8-7e5f-4737-9126-1a0294fed1a7",
+    "sites": "",
+    "sitesArray": [
+      ""
+    ]
+  },
+  {
+    "label": "Zone 3",
+    "key": "shift+7",
+    "action": "javascript",
+    "code": "const targetZoneName = \"Zone 3\"; \n\nconst zoneCards = document.querySelectorAll(\".ticket-type\");\n\nfor (const card of zoneCards) {\n    const titleElement = card.querySelector(\".ticket-title\");\n    if (titleElement && titleElement.textContent.trim() === targetZoneName) {\n        const button = card.querySelector(\"button\");\n        if (button) {\n            button.click();\n            console.log(`✅ Clicked 'Book Now' for ${targetZoneName}`);\n        } else {\n            console.warn(`⚠️ Button not found in ${targetZoneName} card.`);\n        }\n        break;\n    }\n}",
+    "activeInInputs": true,
+    "blacklist": false,
+    "id": "2725b6ef-7b6a-4859-8722-eadc04b8dcd7",
+    "sites": "",
+    "sitesArray": [
+      ""
+    ]
+  },
+  {
+    "label": "Zone 4",
+    "key": "shift+8",
+    "action": "javascript",
+    "code": "const targetZoneName = \"Zone 4\"; \n\nconst zoneCards = document.querySelectorAll(\".ticket-type\");\n\nfor (const card of zoneCards) {\n    const titleElement = card.querySelector(\".ticket-title\");\n    if (titleElement && titleElement.textContent.trim() === targetZoneName) {\n        const button = card.querySelector(\"button\");\n        if (button) {\n            button.click();\n            console.log(`✅ Clicked 'Book Now' for ${targetZoneName}`);\n        } else {\n            console.warn(`⚠️ Button not found in ${targetZoneName} card.`);\n        }\n        break;\n    }\n}",
+    "activeInInputs": true,
+    "blacklist": false,
+    "id": "d92f2a9b-0bb3-4b4c-8d82-5cf923ade83c",
+    "sites": "",
+    "sitesArray": [
+      ""
+    ]
+  },
+  {
+    "label": "Zone 5",
+    "key": "shift+9",
+    "action": "javascript",
+    "code": "const targetZoneName = \"Zone 5\"; \n\nconst zoneCards = document.querySelectorAll(\".ticket-type\");\n\nfor (const card of zoneCards) {\n    const titleElement = card.querySelector(\".ticket-title\");\n    if (titleElement && titleElement.textContent.trim() === targetZoneName) {\n        const button = card.querySelector(\"button\");\n        if (button) {\n            button.click();\n            console.log(`✅ Clicked 'Book Now' for ${targetZoneName}`);\n        } else {\n            console.warn(`⚠️ Button not found in ${targetZoneName} card.`);\n        }\n        break;\n    }\n}",
+    "activeInInputs": true,
+    "blacklist": false,
+    "id": "6f0c08ba-7511-4c62-afe4-8b222deeac40",
+    "sites": "",
+    "sitesArray": [
+      ""
+    ]
+  },
+  {
+    "key": "alt+k",
+    "label": "Fill Visitor Details",
+    "action": "javascript",
+    "activeInInputs": true,
+    "blacklist": false,
+    "code": "const nameInputs = Array.from(document.querySelectorAll('input[placeholder=\"Enter your full name\"]'));\nconst visitorNames = [\n   \"Aarav Sharma\",       // Visitor #1\n    \"Ananya Singh\",       // Visitor #2\n    \"Rohan Patel\",        // Visitor #3\n    \"Sneha Gupta\",        // Visitor #4\n    \"Karan Mehta\",        // Visitor #5\n    \"Priya Desai\"         // Visitor #6\n];\nvisitorNames.forEach((name, index) => {\n    if (nameInputs[index]) {\n        nameInputs[index].value = name;\n        nameInputs[index].dispatchEvent(new Event(\"input\", { bubbles: true }));\n        nameInputs[index].dispatchEvent(new Event(\"change\", { bubbles: true }));\n        console.log(`Visitor ${index + 1} name set to: ${name}`);\n    } else {\n        console.warn(`No input field found for Visitor ${index + 1}`);\n    }\n});\n\nconst genderSelects = Array.from(document.querySelectorAll('select[placeholder=\"Select Gender\"][name^=\"data\"][name*=\"[gender]\"]'));\nconst genderValues = [\n  'male',    // Visitor #1\n  'male',  // Visitor #2\n  'male',   // Visitor #3\n  'male',    // Visitor #4\n  'female',  // Visitor #5\n  'female'    // Visitor #6\n];\n\ngenderValues.forEach((gender, index) => {\n  const selectEl = genderSelects[index];\n  if (selectEl) {\n    selectEl.value = gender;\n    selectEl.dispatchEvent(new Event(\"change\", { bubbles: true }));\n    console.log(`Visitor ${index + 1} gender set to: ${gender}`);\n  } else {\n    console.warn(`No gender dropdown found for Visitor ${index + 1}`);\n  }\n});\n\nconst touristTypeDropdowns = Array.from(document.querySelectorAll(\n  'select[placeholder=\"Select Tourist Type\"][name^=\"data\"][name*=\"[touristType]\"]'\n));\n\nconst touristTypes = [\n  'indian',      // Visitor #1\n  'foreigner',   // Visitor #2\n  'indian',      // Visitor #3\n  'foreigner',   // Visitor #4\n  'indian',      // Visitor #5\n  'foreigner'    // Visitor #6\n];\n\ntouristTypes.forEach((type, index) => {\n  const selectEl = touristTypeDropdowns[index];\n  if (selectEl) {\n    selectEl.value = type;\n    selectEl.dispatchEvent(new Event(\"change\", { bubbles: true }));\n    console.log(`Visitor ${index + 1} tourist type set to: ${type}`);\n  } else {\n    console.warn(`No tourist type dropdown found for Visitor ${index + 1}`);\n  }\n});\n\nconst idTypeDropdowns = Array.from(document.querySelectorAll(\n  'select[placeholder=\"Select ID type\"][name^=\"data\"][name*=\"[idType]\"]'\n));\n\nconst idTypes = [\n  'indianVoterCard',  // Visitor #1\n  'passport',        // Visitor #2\n  'panCard',         // Visitor #3\n  'passport', // Visitor #4\n  'aadhar',          // Visitor #5\n  'passport'         // Visitor #6\n];\n\nidTypes.forEach((idType, index) => {\n  const selectEl = idTypeDropdowns[index];\n  if (selectEl) {\n    selectEl.value = idType;\n    selectEl.dispatchEvent(new Event(\"change\", { bubbles: true }));\n    console.log(`Visitor ${index + 1} ID type set to: ${idType}`);\n  } else {\n    console.warn(`No ID type dropdown found for Visitor ${index + 1}`);\n  }\n});\n\nconst idProofInputs = Array.from(document.querySelectorAll(\n  'input[placeholder=\"ID Proof value\"][name^=\"data\"][name*=\"[idValue]\"]'\n));\n\nconst idProofValues = [\n  'HVV1234567',     // Visitor #1\n  'M1234567',           // Visitor #2\n  'ABCDE1234F',         // Visitor #3\n  'XYZ1234567',         // Visitor #4\n  '789043215678',     // Visitor #5\n  'N9876543'            // Visitor #6\n];\n\nidProofValues.forEach((value, index) => {\n  const inputEl = idProofInputs[index];\n  if (inputEl) {\n    inputEl.value = value;\n    inputEl.dispatchEvent(new Event(\"input\", { bubbles: true }));\n    inputEl.dispatchEvent(new Event(\"change\", { bubbles: true }));\n    console.log(`Visitor ${index + 1} ID proof value set to: ${value}`);\n  } else {\n    console.warn(`No input field found for Visitor ${index + 1}`);\n  }\n});\n\n\nconst ageInputs = Array.from(document.querySelectorAll(\n  'input[placeholder=\"Age of the visitor\"][name^=\"data\"][name*=\"[age]\"]'\n));\n\nconst visitorAges = [\n  '34', // Visitor #1\n  '29', // Visitor #2\n  '41', // Visitor #3\n  '22', // Visitor #4\n  '37', // Visitor #5\n  '48'  // Visitor #6\n];\n\nvisitorAges.forEach((age, index) => {\n  const inputEl = ageInputs[index];\n  if (inputEl) {\n    inputEl.value = age;\n    inputEl.dispatchEvent(new Event(\"input\", { bubbles: true }));\n    inputEl.dispatchEvent(new Event(\"change\", { bubbles: true }));\n    console.log(`Visitor ${index + 1} age set to: ${age}`);\n  } else {\n    console.warn(`No age input found for Visitor ${index + 1}`);\n  }\n});\n",
+    "id": "856adbb2-2be6-498f-b5d0-36a9d98e8ffb",
+    "sites": "",
+    "sitesArray": [
+      ""
+    ]
+  },
+  {
+    "key": "alt+m",
+    "label": "Browse Files link",
+    "action": "javascript",
+    "code": "const browseLink = document.querySelector('a.browse[href=\"#\"]');\nif (browseLink) {\n  browseLink.click();\n  console.log('Clicked Browse Files link');\n} else {\n  console.warn('Link not found');\n}",
+    "activeInInputs": true,
+    "blacklist": false,
+    "id": "62d2c1c5-6bc4-4e78-90ea-ffdf99bad48c",
+    "sites": "",
+    "sitesArray": [
+      ""
+    ]
+  }
+]

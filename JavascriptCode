@@ -1,0 +1,217 @@
+const nameInputs = Array.from(document.querySelectorAll('input[placeholder="Enter your full name"]'));
+const visitorNames = [
+   "Aarav Sharma",       // Visitor #1
+    "Ananya Singh",       // Visitor #2
+    "Rohan Patel",        // Visitor #3
+    "Sneha Gupta",        // Visitor #4
+    "Karan Mehta",        // Visitor #5
+    "Priya Desai"         // Visitor #6
+];
+visitorNames.forEach((name, index) => {
+    if (nameInputs[index]) {
+        nameInputs[index].value = name;
+        nameInputs[index].dispatchEvent(new Event("input", { bubbles: true }));
+        nameInputs[index].dispatchEvent(new Event("change", { bubbles: true }));
+        console.log(`✅ Visitor ${index + 1} name set to: ${name}`);
+    } else {
+        console.warn(`⚠️ No input field found for Visitor ${index + 1}`);
+    }
+});
+
+
+
+
+document.querySelectorAll('.list-group-item.schedule-item').forEach(el => {
+    if (el.textContent.includes('Morning Gypsy')) {
+        el.removeAttribute('disabled');  // optional
+        el.click();
+    }
+});
+
+document.querySelectorAll('.list-group-item.schedule-item').forEach(el => {
+    if (el.textContent.includes('Afternoon Gypsy')) {
+        el.removeAttribute('disabled');  // optional
+        el.click();
+    }
+});
+
+
+document.querySelectorAll('.list-group-item.schedule-item').forEach(el => {
+    if (el.textContent.includes('Morning Canter')) {
+        el.removeAttribute('disabled');  // optional
+        el.click();
+    }
+});
+
+
+document.querySelectorAll('.list-group-item.schedule-item').forEach(el => {
+    if (el.textContent.includes('Afternoon Canter')) {
+        el.removeAttribute('disabled');  // optional
+        el.click();
+    }
+});
+
+
+const checkbox = document.getElementById('agreeCheck');
+if (checkbox && !checkbox.checked) {
+    checkbox.checked = true;
+    checkbox.dispatchEvent(new Event('change', { bubbles: true }));
+}
+
+const agreeBtn = document.getElementById('agreeContinueBtn');
+if (agreeBtn) {
+    agreeBtn.click();
+}
+
+
+
+
+const nameInputs = Array.from(document.querySelectorAll('input[placeholder="Enter your full name"]'));
+const visitorNames = [
+   "Aarav Sharma",       // Visitor #1
+    "Ananya Singh",       // Visitor #2
+    "Rohan Patel",        // Visitor #3
+    "Sneha Gupta",        // Visitor #4
+    "Karan Mehta",        // Visitor #5
+    "Priya Desai"         // Visitor #6
+];
+visitorNames.forEach((name, index) => {
+    if (nameInputs[index]) {
+        nameInputs[index].value = name;
+        nameInputs[index].dispatchEvent(new Event("input", { bubbles: true }));
+        nameInputs[index].dispatchEvent(new Event("change", { bubbles: true }));
+        console.log(`Visitor ${index + 1} name set to: ${name}`);
+    } else {
+        console.warn(`No input field found for Visitor ${index + 1}`);
+    }
+});
+
+const genderSelects = Array.from(document.querySelectorAll('select[placeholder="Select Gender"][name^="data"][name*="[gender]"]'));
+const genderValues = [
+  'male',    // Visitor #1
+  'male',  // Visitor #2
+  'male',   // Visitor #3
+  'male',    // Visitor #4
+  'female',  // Visitor #5
+  'female'    // Visitor #6
+];
+
+genderValues.forEach((gender, index) => {
+  const selectEl = genderSelects[index];
+  if (selectEl) {
+    selectEl.value = gender;
+    selectEl.dispatchEvent(new Event("change", { bubbles: true }));
+    console.log(`Visitor ${index + 1} gender set to: ${gender}`);
+  } else {
+    console.warn(`No gender dropdown found for Visitor ${index + 1}`);
+  }
+});
+
+const touristTypeDropdowns = Array.from(document.querySelectorAll(
+  'select[placeholder="Select Tourist Type"][name^="data"][name*="[touristType]"]'
+));
+
+const touristTypes = [
+  'indian',      // Visitor #1
+  'foreigner',   // Visitor #2
+  'indian',      // Visitor #3
+  'foreigner',   // Visitor #4
+  'indian',      // Visitor #5
+  'foreigner'    // Visitor #6
+];
+
+touristTypes.forEach((type, index) => {
+  const selectEl = touristTypeDropdowns[index];
+  if (selectEl) {
+    selectEl.value = type;
+    selectEl.dispatchEvent(new Event("change", { bubbles: true }));
+    console.log(`Visitor ${index + 1} tourist type set to: ${type}`);
+  } else {
+    console.warn(`No tourist type dropdown found for Visitor ${index + 1}`);
+  }
+});
+
+const idTypeDropdowns = Array.from(document.querySelectorAll(
+  'select[placeholder="Select ID type"][name^="data"][name*="[idType]"]'
+));
+
+const idTypes = [
+  'indianVoterCard',  // Visitor #1
+  'passport',        // Visitor #2
+  'panCard',         // Visitor #3
+  'passport', // Visitor #4
+  'aadhar',          // Visitor #5
+  'passport'         // Visitor #6
+];
+
+idTypes.forEach((idType, index) => {
+  const selectEl = idTypeDropdowns[index];
+  if (selectEl) {
+    selectEl.value = idType;
+    selectEl.dispatchEvent(new Event("change", { bubbles: true }));
+    console.log(`Visitor ${index + 1} ID type set to: ${idType}`);
+  } else {
+    console.warn(`No ID type dropdown found for Visitor ${index + 1}`);
+  }
+});
+
+const idProofInputs = Array.from(document.querySelectorAll(
+  'input[placeholder="ID Proof value"][name^="data"][name*="[idValue]"]'
+));
+
+const idProofValues = [
+  'HVV1234567',     // Visitor #1
+  'M1234567',           // Visitor #2
+  'ABCDE1234F',         // Visitor #3
+  'XYZ1234567',         // Visitor #4
+  '789043215678',     // Visitor #5
+  'N9876543'            // Visitor #6
+];
+
+idProofValues.forEach((value, index) => {
+  const inputEl = idProofInputs[index];
+  if (inputEl) {
+    inputEl.value = value;
+    inputEl.dispatchEvent(new Event("input", { bubbles: true }));
+    inputEl.dispatchEvent(new Event("change", { bubbles: true }));
+    console.log(`Visitor ${index + 1} ID proof value set to: ${value}`);
+  } else {
+    console.warn(`No input field found for Visitor ${index + 1}`);
+  }
+});
+
+
+const ageInputs = Array.from(document.querySelectorAll(
+  'input[placeholder="Age of the visitor"][name^="data"][name*="[age]"]'
+));
+
+const visitorAges = [
+  '34', // Visitor #1
+  '29', // Visitor #2
+  '41', // Visitor #3
+  '22', // Visitor #4
+  '37', // Visitor #5
+  '48'  // Visitor #6
+];
+
+visitorAges.forEach((age, index) => {
+  const inputEl = ageInputs[index];
+  if (inputEl) {
+    inputEl.value = age;
+    inputEl.dispatchEvent(new Event("input", { bubbles: true }));
+    inputEl.dispatchEvent(new Event("change", { bubbles: true }));
+    console.log(`Visitor ${index + 1} age set to: ${age}`);
+  } else {
+    console.warn(`No age input found for Visitor ${index + 1}`);
+  }
+});
+
+
+
+const browseLink = document.querySelector('a.browse[href="#"]');
+if (browseLink) {
+  browseLink.click();
+  console.log('Clicked Browse Files link');
+} else {
+  console.warn('Link not found');
+}
