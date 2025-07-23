@@ -20,3 +20,7 @@ Existing PyCharm Software
 7) Error will go away
 8) Go to Terminal and run following command
 9) pip install keyboard, autoit, pyautoit, pyautogui, opencv-python, Pillow,numpy,pyperclip
+
+
+10) Add Shortkeys code to shortkeys plugin
+11) Update Data in Shortkeys plugin
