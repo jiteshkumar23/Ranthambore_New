@@ -88,43 +88,43 @@ countOfPersons = indian_count + non_indian_count
 
 def fillPage1():
     print("Hello, this is Page 1")
-    keyboard.press_and_release('alt+i')
+    autoit.send("!i")
     time.sleep(0.5)
     multiplePressUsingPyAutoGUI('pagedown', 1)
     time.sleep(0.5)
     find_image_on_screen_using_opencv(BookNow_image_path, 10)
     if zone == "Zone 6":
-        keyboard.press_and_release('alt+o')
+        autoit.send("!o")  # Alt + O
     elif zone == "Zone 7":
-        keyboard.press_and_release('shift+1')
+        autoit.send("+1")  # Shift + 1 → "!"
     elif zone == "Zone 8":
-        keyboard.press_and_release('shift+[')
+        autoit.send("+[")  # Shift + [ → depends on layout
     elif zone == "Zone 9":
-        keyboard.press_and_release('shift+3')
+        autoit.send("+3")  # Shift + 3 → "#"
     elif zone == "Zone 10":
-        keyboard.press_and_release('shift+4')
+        autoit.send("+4")  # Shift + 4 → "$"
     elif zone == "Zone 1":
-        keyboard.press_and_release('shift+5')
+        autoit.send("+5")  # Shift + 5 → "%"
     elif zone == "Zone 2":
-        keyboard.press_and_release('shift+6')
+        autoit.send("+6")  # Shift + 6 → "^"
     elif zone == "Zone 3":
-        keyboard.press_and_release('shift+7')
+        autoit.send("+7")  # Shift + 7 → "&"
     elif zone == "Zone 4":
-        keyboard.press_and_release('shift+8')
+        autoit.send("+8")  # Shift + 8 → "*"
     elif zone == "Zone 5":
-        keyboard.press_and_release('shift+9')
+        autoit.send("+9")  # Shift + 9 → "("
 
 def fillPage2():
     print("Hello, this is Page 2")
     find_image_on_screen_using_opencv(PleaseSelect_image_path, 20)
-    if slot.lower() == "morning gypsy".lower():
-        keyboard.press_and_release('shift+0')
-    elif slot.lower() == "afternoon gypsy".lower():
-        keyboard.press_and_release('shift+]')
-    elif slot.lower() == "morning canter".lower():
-        keyboard.press_and_release('shift+w')
-    elif slot.lower() == "afternoon canter".lower():
-        keyboard.press_and_release('alt+p')
+    if slot.lower() == "morning gypsy":
+        autoit.send("+0")  # Shift + 0 → ")"
+    elif slot.lower() == "afternoon gypsy":
+        autoit.send("+]")  # Shift + ] → Depending on layout, often "}"
+    elif slot.lower() == "morning canter":
+        autoit.send("+w")  # Shift + W → "W"
+    elif slot.lower() == "afternoon canter":
+        autoit.send("!p")  # Alt + P
 
     find_image_on_screen_using_opencv(minus_image_path, 6)
     time.sleep(0.5)
@@ -149,12 +149,12 @@ def Payment():
 
     find_image_on_screen_using_opencv(instructions_image_path, 6)
     time.sleep(0.2)
-    keyboard.press_and_release('alt+q')
+    autoit.send("!q")  # Alt + Q
 
     multiplePressUsingPyAutoGUI('pagedown', 1)
     time.sleep(0.1)
     # pyautogui.click(find_image_on_screen_using_opencv(agree_image_path, 6))
-    keyboard.press_and_release('alt+r')
+    autoit.send("!r")  # Alt + R
 
 
 def fillVisitorDetails():
@@ -170,18 +170,22 @@ def fillVisitorDetails():
     else:
         flag = False
     if flag:
-        keyboard.press_and_release('alt+k')
+        autoit.send("!k")  # Alt + K
         time.sleep(1)
+
         for i in range(int(countOfPersons)):
             person = persons_list[i]
             speed_for_first_page(speed)
+
             print('about to press alt+m')
-            keyboard.press_and_release('alt+m')
+            autoit.send("!m")  # Alt + M
+
             find_image_on_screen_using_opencv_color(FileNamePopup_image_path, 5)
             time.sleep(0.2)
+
             pyperclip.copy(person['attachmentName'])
-            autoit.send("^v")
-            autoit.send("{ENTER}")
+            autoit.send("^v")  # Ctrl + V
+            autoit.send("{ENTER}")  # Press Enter
             time.sleep(2)
 
     else:
@@ -510,7 +514,8 @@ def performFunctionUntilImageIsFound(template_path1, timeout, threshold=0.7):
         clickContinueButton()
 
 def clickContinueButton():
-    keyboard.press_and_release('alt+s')
+    autoit.send("!s")  # Sends Alt + S
+
 
 def setImagePath():
     global image_directory
