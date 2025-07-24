@@ -60,7 +60,7 @@ global image_directory, MorningGypsy_image_path,PleaseSelect_image_path, \
     showQR_AfterTiger_image_path, UPI_ID_image_path, UPI_ID_Image2_image_path, gender_dropdown_image_path, \
     id_details_image_path, age_image_path, fullname_image_path, \
     id_proof_not_selected_image_path, emailAddress_image_path, emailAddress_2_image_path, \
-    UPIOnRazorPay_image_path,FileNamePopup_image_path
+    UPIOnRazorPay_image_path,FileNamePopup_image_path,tiger_image_path
 
 timeStart1, timeEnd1, timer1 = '0:0:0.0', '0:0:0.0', timer
 timeStart2, timeEnd2, timer2 = '0:0:0.0', '0:0:0.0', timer
@@ -88,8 +88,13 @@ countOfPersons = indian_count + non_indian_count
 
 def fillPage1():
     print("Hello, this is Page 1")
+    pyautogui.click(find_image_on_screen_using_opencv(tiger_image_path, 6))
+    time.sleep(0.2)
+    # pyautogui.keyDown('alt')
+    # pyautogui.press('i')
+    # pyautogui.keyUp('alt')
     autoit.send("!i")
-    time.sleep(0.5)
+    time.sleep(0.75)
     multiplePressUsingPyAutoGUI('pagedown', 1)
     time.sleep(0.5)
     find_image_on_screen_using_opencv(BookNow_image_path, 10)
@@ -126,19 +131,21 @@ def fillPage2():
     elif slot.lower() == "afternoon canter":
         autoit.send("!p")  # Alt + P
 
-    find_image_on_screen_using_opencv(minus_image_path, 6)
+    time.sleep(1)
+    pyautogui.click(find_image_on_screen_using_opencv(minus_image_path, 6))
     time.sleep(0.5)
-    multiplePressUsingPyAutoGUI('tab',3)
+    multiplePressUsingPyAutoGUI('tab',1)
     if indian_count > 0:
         multiplePressUsingPyAutoGUI('backspace', 1)
         time.sleep(0.2)
         pyautogui.typewrite(str(indian_count))
+        time.sleep(0.2)
     multiplePressUsingPyAutoGUI('tab', 1)
     if non_indian_count > 0:
         multiplePressUsingPyAutoGUI('backspace', 1)
         time.sleep(0.2)
         pyautogui.typewrite(str(non_indian_count))
-
+        time.sleep(0.2)
     time.sleep(0.5)
     pyautogui.click(find_image_on_screen_using_opencv(OK_image_path, 6))
 
@@ -664,6 +671,9 @@ def setImagePath():
 
     global FileNamePopup_image_path
     FileNamePopup_image_path = os.path.join(image_directory, 'FileNamePopup.png')
+
+    global tiger_image_path
+    tiger_image_path = os.path.join(image_directory, 'tiger.png')
 
 
 
