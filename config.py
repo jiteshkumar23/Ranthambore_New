@@ -16,7 +16,7 @@ indian_count = 6
 non_indian_count = 0
 
 # Payment Method - "upi" or "upi_id" or "creditcard"
-paymentMethod = "upi_id"
+paymentMethod = "creditcard"
 
 # if payment method is upi_id , provide UPI ADDRESS
 UPI_ADDRESS = "9999999999@ibl"
@@ -29,52 +29,52 @@ NameOnCard = "Raj Kumar"  # Name on the Credit Card
 
 # Details of 20 Passengers
 paxOfPerson1 = "Indian"  # "Indian" , "Foreigner"
-nameOfPerson1 = "John Doe"
+nameOfPerson1 = "Ashish Thakur"
 idTypeOfPerson1 = "Passport"
 idNumberOfPerson1 = "AB123456"
-genderOfPerson1 = "Female"  # "Male", "Female"
+genderOfPerson1 = "Male"  # "Male", "Female"
 ageOfPerson1 = "25"
-attachmentNameOfPerson1 = r"C:\Users\jites\OneDrive\Desktop\SNN1.png"
+attachmentNameOfPerson1 = r"C:\Users\user\Desktop\Photos\Photo1.jpeg"
 
 paxOfPerson2 = "Indian"
-nameOfPerson2 = "Jane Smith"
+nameOfPerson2 = "Swati Thakur"
 idTypeOfPerson2 = "Aadhar Card"
 idNumberOfPerson2 = "554378987614"
-genderOfPerson2 = "Male"
+genderOfPerson2 = "Female"
 ageOfPerson2 = "26"
-attachmentNameOfPerson2 = r"C:\Users\jites\OneDrive\Desktop\SNN2.png"
+attachmentNameOfPerson2 = r"C:\Users\user\Desktop\Photos\Photo2.jpeg"
 
-paxOfPerson3 = "Foreigner"
-nameOfPerson3 = "Alice Brown"
+paxOfPerson3 = "Indian"
+nameOfPerson3 = "Priya Sharma"
 idTypeOfPerson3 = "Passport"
 idNumberOfPerson3 = "DL456789"
 genderOfPerson3 = "Female"
 ageOfPerson3 = "27"
-attachmentNameOfPerson3 = r"C:\Users\jites\OneDrive\Desktop\SNN3.png"
+attachmentNameOfPerson3 = r"C:\Users\user\Desktop\Photos\Photo3.jpeg"
 
 paxOfPerson4 = "Indian"
-nameOfPerson4 = "Bob White"
+nameOfPerson4 = "Kuldeep Sharma"
 idTypeOfPerson4 = "Indian Voter Card"
 idNumberOfPerson4 = "HVV1234567"
 genderOfPerson4 = "Male"
 ageOfPerson4 = "28"
-attachmentNameOfPerson4 = r"C:\Users\jites\OneDrive\Desktop\SNN4.png"
+attachmentNameOfPerson4 = r"C:\Users\user\Desktop\Photos\Photo4.jpeg"
 
-paxOfPerson5 = "Foreigner"
-nameOfPerson5 = "Charlie Green"
+paxOfPerson5 = "Indian"
+nameOfPerson5 = "Anandi Sharma"
 idTypeOfPerson5 = "Passport"
 idNumberOfPerson5 = "PAN123456"
 genderOfPerson5 = "Female"
 ageOfPerson5 = "29"
-attachmentNameOfPerson5 = r"C:\Users\jites\OneDrive\Desktop\SNN5.png"
+attachmentNameOfPerson5 = r"C:\Users\user\Desktop\Photos\Photo5.jpeg"
 
 paxOfPerson6 = "Indian"
-nameOfPerson6 = "Eve Black"
+nameOfPerson6 = "Rinki Thakur"
 idTypeOfPerson6 = "Aadhar Card"
 idNumberOfPerson6 = "554378987615"
 genderOfPerson6 = "Female"
 ageOfPerson6 = "30"
-attachmentNameOfPerson6 = r"C:\Users\jites\OneDrive\Desktop\SNN6.png"
+attachmentNameOfPerson6 = r"C:\Users\user\Desktop\Photos\Photo6.jpeg"
 
 paxOfPerson7 = "Foreigner"
 nameOfPerson7 = "David Blue"
@@ -198,8 +198,8 @@ attachmentNameOfPerson20 = ""
 
 
 # SPEED Selection
-speed = 0.2  # 0.1 is more human like ,0.05 is faster ,  0.01 is super fast , 0.0 is GOD mode
-delay_correct = random.uniform(0.05, 0.2) # Random delay for correct typing, range can be adjusted
+speed = 0.25  # 0.1 is more human like ,0.05 is faster ,  0.01 is super fast , 0.0 is GOD mode
+delay_correct = random.uniform(0.05, 0.13) # Random delay for correct typing, range can be adjusted
 
 #0.1, 0.12, 0.3
 # Total number of persons in the group
