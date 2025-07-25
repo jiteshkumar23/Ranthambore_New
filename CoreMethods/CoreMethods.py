@@ -157,7 +157,7 @@ def Payment():
 
     find_image_on_screen_using_opencv(instructions_image_path, 6)
     time.sleep(0.2)
-    autoit.send("!q")  # Alt + Q
+    autoit.send("!u")  # Alt + Q
 
     multiplePressUsingPyAutoGUI('pagedown', 1)
     time.sleep(0.1)

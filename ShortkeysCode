@@ -130,7 +130,7 @@
     ]
   },
   {
-    "key": "alt+q",
+    "key": "alt+u",
     "label": "Instructions",
     "action": "javascript",
     "code": "const checkbox = document.getElementById('agreeCheck');\nif (checkbox && !checkbox.checked) {\n    checkbox.checked = true;\n    checkbox.dispatchEvent(new Event('change', { bubbles: true }));\n}",

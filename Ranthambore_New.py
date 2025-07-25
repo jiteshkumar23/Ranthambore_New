@@ -16,7 +16,7 @@ def main():
     print_instructions()
 
     # Add listener
-    keyboard.add_hotkey('alt+7', exit_program)
+    keyboard.add_hotkey('alt+w', exit_program)
 
     while True:
         if handle_key_press():
@@ -31,8 +31,8 @@ def print_instructions():
     print("Press - alt+3 - For filling fourth page")
     print("Press - alt+4 - For filling fifth page")
     print("Press - alt+5 - For filling sixth page")
-    print("Press - alt+6 - For complete booking")
-    print("Press - alt+7 - For exiting the script")
+    print("Press - alt+q - For complete booking")
+    print("Press - alt+w - For exiting the script")
 
 def handle_key_press():
     if keyboard.is_pressed("alt+1"):
@@ -61,15 +61,15 @@ def handle_key_press():
         paymentFinal()
         debounce_key("alt+5")  # Wait until the key is released
         return True
-    elif keyboard.is_pressed("alt+6"):
-        print("Keys Pressed - alt+6 - for complete booking")
+    elif keyboard.is_pressed("alt+q"):
+        print("Keys Pressed - alt+q - for complete booking")
         fillPage1()
         fillPage2()
         Payment()
         fillVisitorDetails()
         mobile()
         paymentFinal()
-        debounce_key("alt+6")  # Wait until the key is released
+        debounce_key("alt+q")  # Wait until the key is released
         return True
     return False
 
