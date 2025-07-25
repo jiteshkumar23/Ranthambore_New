@@ -16,7 +16,7 @@ import pyperclip
 
 from pyautogui import moveTo
 
-from config import delay_correct, delay_error, paxOfPerson1, machine, nameOfPerson1, \
+from config import delay_correct, paxOfPerson1, machine, nameOfPerson1, \
     idTypeOfPerson1, idNumberOfPerson1, genderOfPerson1, paxOfPerson2, nameOfPerson2, idTypeOfPerson2, \
     idNumberOfPerson2, genderOfPerson2, paxOfPerson3, nameOfPerson3, idTypeOfPerson3, \
     idNumberOfPerson3, genderOfPerson3, paxOfPerson4, nameOfPerson4, idTypeOfPerson4, \
@@ -46,10 +46,11 @@ from config import delay_correct, delay_error, paxOfPerson1, machine, nameOfPers
     attachmentNameOfPerson9, attachmentNameOfPerson10, attachmentNameOfPerson11, attachmentNameOfPerson12, \
     attachmentNameOfPerson13, attachmentNameOfPerson14, attachmentNameOfPerson15, attachmentNameOfPerson16, \
     attachmentNameOfPerson17, attachmentNameOfPerson18, attachmentNameOfPerson19, attachmentNameOfPerson20, \
-    mobileNumber, paymentMethod, UPI_ADDRESS, usePluginForVisitorDetails
+    mobileNumber, paymentMethod, UPI_ADDRESS, usePluginForVisitorDetails, normalTypingInForm, card_number, mmyy, cvv, \
+    NameOnCard
 
 global image_directory, MorningGypsy_image_path,PleaseSelect_image_path, \
-    MorningCanter_image_path,minus_image_path,PayButton_image_path,instructions_image_path,agree_image_path,\
+    MorningCanter_image_path,PayButton_image_path,instructions_image_path,agree_image_path,\
     Visitor1_image_path,OK_image_path,ContinueGreen_image_path,mobile_image_path,PayAfterMobile_image_path,\
     SelectPaymentOption_image_path,UPI_image_path, \
     PayNow_image_path, email_image_path, \
@@ -60,7 +61,7 @@ global image_directory, MorningGypsy_image_path,PleaseSelect_image_path, \
     showQR_AfterTiger_image_path, UPI_ID_image_path, UPI_ID_Image2_image_path, gender_dropdown_image_path, \
     id_details_image_path, age_image_path, fullname_image_path, \
     id_proof_not_selected_image_path, emailAddress_image_path, emailAddress_2_image_path, \
-    UPIOnRazorPay_image_path,FileNamePopup_image_path,tiger_image_path
+    UPIOnRazorPay_image_path,FileNamePopup_image_path,tiger_image_path,AvailableSeats_image_path
 
 timeStart1, timeEnd1, timer1 = '0:0:0.0', '0:0:0.0', timer
 timeStart2, timeEnd2, timer2 = '0:0:0.0', '0:0:0.0', timer
@@ -132,9 +133,9 @@ def fillPage2():
         autoit.send("!p")  # Alt + P
 
     time.sleep(1)
-    pyautogui.click(find_image_on_screen_using_opencv(minus_image_path, 6))
+    pyautogui.click(find_image_on_screen_using_opencv(AvailableSeats_image_path, 6))
     time.sleep(0.5)
-    multiplePressUsingPyAutoGUI('tab',1)
+    multiplePressUsingPyAutoGUI('tab',2)
     if indian_count > 0:
         multiplePressUsingPyAutoGUI('backspace', 1)
         time.sleep(0.2)
@@ -176,6 +177,11 @@ def fillVisitorDetails():
         flag = True
     else:
         flag = False
+
+    if normalTypingInForm.lower() == "yes":
+        flag2 = True
+    else:
+        flag2 = False
     if flag:
         autoit.send("!k")  # Alt + K
         time.sleep(1)
@@ -200,10 +206,11 @@ def fillVisitorDetails():
             person = persons_list[i]
             # Set time Start here
             speed_for_first_page(speed)
-            # human_typing(person['name'].strip())
-
-            pyperclip.copy(person['name'].strip())
-            autoit.send("^v")
+            if flag2:
+                human_typing(person['name'].strip())
+            else:
+                pyperclip.copy(person['name'].strip())
+                autoit.send("^v")
             speed_for_first_page(speed)
             autoit.send("{TAB}")
             speed_for_first_page(speed)
@@ -221,17 +228,21 @@ def fillVisitorDetails():
             speed_for_first_page(speed)
             autoit.send("{TAB}")
             speed_for_first_page(speed)
-            # human_typing(person['idNumber'].strip())
 
-            pyperclip.copy(person['idNumber'].strip())
-            autoit.send("^v")
+            if flag2:
+                human_typing(person['idNumber'].strip())
+            else:
+                pyperclip.copy(person['idNumber'].strip())
+                autoit.send("^v")
             speed_for_first_page(speed)
             autoit.send("{TAB}")
             speed_for_first_page(speed)
-            # human_typing(person['age'].strip())
 
-            pyperclip.copy(person['age'].strip())
-            autoit.send("^v")
+            if flag2:
+                human_typing(person['age'].strip())
+            else:
+                pyperclip.copy(person['age'].strip())
+                autoit.send("^v")
             speed_for_first_page(speed)
             time.sleep(0.25)
             speed_for_first_page(speed)
@@ -258,14 +269,15 @@ def fillVisitorDetails():
 
 def mobile():
     pyautogui.click(find_image_on_screen_using_opencv(mobile_image_path, 10))
-    autoit.send(mobileNumber)
+    # autoit.send(mobileNumber)
+    human_typing(mobileNumber)
     # pyautogui.click(find_image_on_screen_using_opencv_color(PayAfterMobile_image_path, 60,0.95))
 
 
 def paymentFinal():
     location = find_image_on_screen_using_opencv(SelectPaymentOption_image_path, 300)
     pyautogui.click(location)
-    if paymentMethod == "upi" or paymentMethod == "upi_id":
+    if paymentMethod.lower() == "upi" or paymentMethod.lower() == "upi_id":
         location2 = find_image_on_screen_using_opencv(UPI_image_path, 30)
         pyautogui.click(location2)
         print("clicked on UPI")
@@ -279,12 +291,12 @@ def paymentFinal():
         find_image_on_screen_using_opencv_color(PaymentOptions_image_path, 60)
         time.sleep(0.5)
         pyautogui.click(find_image_on_screen_using_opencv_color(UPIOnRazorPay_image_path, 60, 0.95))
-        if paymentMethod == "upi":
+        if paymentMethod.lower() == "upi":
             time.sleep(0.2)
             location6 = find_image_on_screen_using_opencv(showQR_image_path, 10)
             print("show QR was displayed")
             pyautogui.click(location6)
-        elif paymentMethod == "upi_id":
+        elif paymentMethod.lower() == "upi_id":
             location6 = find_image_on_screen_using_opencv(UPI_ID_image_path, 10)
             print("UPI_ID was displayed")
             pyautogui.click(location6)
@@ -295,8 +307,36 @@ def paymentFinal():
             autoit.send("{TAB}")
             time.sleep(0.1)
             autoit.send("{ENTER}")
-
-
+    elif paymentMethod.lower() == "creditcard":
+        location7 = find_image_on_screen_using_opencv(creditcard_image_path, 10)
+        pyautogui.click(location7)
+        # location8 = find_image_on_screen_using_opencv(PayNow_image_path, 10)
+        # pyautogui.click(location8)
+        time.sleep(0.1)
+        autoit.send("{TAB}")
+        time.sleep(0.1)
+        autoit.send("{ENTER}")
+        print("clicked on Pay Now button")
+        location9 = find_image_on_screen_using_opencv_color(CardNumber_image_path, 60)
+        time.sleep(1)
+        pyautogui.click(location9)
+        time.sleep(0.1)
+        human_typing(card_number)
+        time.sleep(0.1)
+        autoit.send("{TAB}")
+        time.sleep(0.1)
+        human_typing(mmyy)
+        time.sleep(0.1)
+        autoit.send("{TAB}")
+        time.sleep(0.1)
+        human_typing(cvv)
+        time.sleep(0.1)
+        autoit.send("{TAB}")
+        time.sleep(0.1)
+        human_typing(NameOnCard)
+        time.sleep(0.1)
+        location12 = find_image_on_screen_using_opencv(ContinueOnCard_image_path, 10)
+        pyautogui.click(location12)
 
 def printDateTime():
     print(f"Time: {datetime.datetime.now().strftime('%H:%M:%S.%f')[:-3]}")
@@ -421,7 +461,7 @@ def autoit_slow_type_with_error(text):
             # Type the wrong random character
             autoit.send(wrong_character)
             # Backspace to delete the wrong character
-            time.sleep(delay_error)
+            # time.sleep(delay_error)
             autoit.send("{BACKSPACE}")
             time.sleep(delay_correct)
         # Type the correct character
@@ -442,7 +482,7 @@ def autoit_slow_type_numbers_with_error(numbers):
             # Type the wrong random character
             autoit.send(wrong_character)
             # Backspace to delete the wrong character
-            time.sleep(delay_error)
+            # time.sleep(delay_error)
             autoit.send("{BACKSPACE}")
             time.sleep(delay_correct)
             # Additional delay for the correction
@@ -555,8 +595,8 @@ def setImagePath():
     global MorningCanter_image_path
     MorningCanter_image_path = os.path.join(image_directory, 'MorningCanter.png')
 
-    global minus_image_path
-    minus_image_path = os.path.join(image_directory, 'minus.png')
+    global AvailableSeats_image_path
+    AvailableSeats_image_path = os.path.join(image_directory, 'AvailableSeats.png')
 
     global PayButton_image_path
     PayButton_image_path = os.path.join(image_directory, 'PayButton.png')
@@ -674,6 +714,12 @@ def setImagePath():
 
     global tiger_image_path
     tiger_image_path = os.path.join(image_directory, 'tiger.png')
+
+    global CardNumber_image_path
+    CardNumber_image_path = os.path.join(image_directory, 'CardNumber.png')
+
+    global ContinueOnCard_image_path
+    ContinueOnCard_image_path = os.path.join(image_directory, 'ContinueOnCard.png')
 
 
 

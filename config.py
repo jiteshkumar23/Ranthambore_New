@@ -1,21 +1,31 @@
 # laptop or desktop
+import random
+
 machine = "desktop"
 
-usePluginForVisitorDetails = "No"
+usePluginForVisitorDetails = "No"  # "Yes" or "No"
+
+normalTypingInForm = "Yes"  # "Yes" or "No"
 
 zone = "Zone 10"
 slot = "Morning Canter" # "Morning Gypsy", "Afternoon Gypsy", "Morning Canter", "Afternoon Canter"
 
-mobileNumber = "9999999999"
+mobileNumber = "9999999999"  # Mobile Number of the person booking the safari
 
-indian_count = 3
-non_indian_count = 2
+indian_count = 6
+non_indian_count = 0
 
 # Payment Method - "upi" or "upi_id" or "creditcard"
-paymentMethod = "upi"
+paymentMethod = "upi_id"
 
 # if payment method is upi_id , provide UPI ADDRESS
 UPI_ADDRESS = "9999999999@ibl"
+
+
+card_number = "5376523894009999"  # Card Number for Credit Card Payment
+mmyy = "0628"  # MMYY format for Credit Card Expiry Date
+cvv = "337"  # CVV for Credit Card Payment
+NameOnCard = "Raj Kumar"  # Name on the Credit Card
 
 # Details of 20 Passengers
 paxOfPerson1 = "Indian"  # "Indian" , "Foreigner"
@@ -24,7 +34,7 @@ idTypeOfPerson1 = "Passport"
 idNumberOfPerson1 = "AB123456"
 genderOfPerson1 = "Female"  # "Male", "Female"
 ageOfPerson1 = "25"
-attachmentNameOfPerson1 = r"C:\Users\user\Desktop\Photos\Photo1.jpeg"
+attachmentNameOfPerson1 = r"C:\Users\jites\OneDrive\Desktop\SNN1.png"
 
 paxOfPerson2 = "Indian"
 nameOfPerson2 = "Jane Smith"
@@ -32,7 +42,7 @@ idTypeOfPerson2 = "Aadhar Card"
 idNumberOfPerson2 = "554378987614"
 genderOfPerson2 = "Male"
 ageOfPerson2 = "26"
-attachmentNameOfPerson2 = r"C:\Users\user\Desktop\Photos\Photo2.jpeg"
+attachmentNameOfPerson2 = r"C:\Users\jites\OneDrive\Desktop\SNN2.png"
 
 paxOfPerson3 = "Foreigner"
 nameOfPerson3 = "Alice Brown"
@@ -40,7 +50,7 @@ idTypeOfPerson3 = "Passport"
 idNumberOfPerson3 = "DL456789"
 genderOfPerson3 = "Female"
 ageOfPerson3 = "27"
-attachmentNameOfPerson3 = r"C:\Users\user\Desktop\Photos\Photo3.jpeg"
+attachmentNameOfPerson3 = r"C:\Users\jites\OneDrive\Desktop\SNN3.png"
 
 paxOfPerson4 = "Indian"
 nameOfPerson4 = "Bob White"
@@ -48,7 +58,7 @@ idTypeOfPerson4 = "Indian Voter Card"
 idNumberOfPerson4 = "HVV1234567"
 genderOfPerson4 = "Male"
 ageOfPerson4 = "28"
-attachmentNameOfPerson4 = r"C:\Users\user\Desktop\Photos\Photo4.jpeg"
+attachmentNameOfPerson4 = r"C:\Users\jites\OneDrive\Desktop\SNN4.png"
 
 paxOfPerson5 = "Foreigner"
 nameOfPerson5 = "Charlie Green"
@@ -56,7 +66,7 @@ idTypeOfPerson5 = "Passport"
 idNumberOfPerson5 = "PAN123456"
 genderOfPerson5 = "Female"
 ageOfPerson5 = "29"
-attachmentNameOfPerson5 = r"C:\Users\user\Desktop\Photos\Photo5.jpeg"
+attachmentNameOfPerson5 = r"C:\Users\jites\OneDrive\Desktop\SNN5.png"
 
 paxOfPerson6 = "Indian"
 nameOfPerson6 = "Eve Black"
@@ -64,7 +74,7 @@ idTypeOfPerson6 = "Aadhar Card"
 idNumberOfPerson6 = "554378987615"
 genderOfPerson6 = "Female"
 ageOfPerson6 = "30"
-attachmentNameOfPerson6 = r"C:\Users\user\Desktop\Photos\Photo6.jpeg"
+attachmentNameOfPerson6 = r"C:\Users\jites\OneDrive\Desktop\SNN6.png"
 
 paxOfPerson7 = "Foreigner"
 nameOfPerson7 = "David Blue"
@@ -188,9 +198,8 @@ attachmentNameOfPerson20 = ""
 
 
 # SPEED Selection
-speed = 0.1  # 0.1 is more human like ,0.05 is faster ,  0.01 is super fast , 0.0 is GOD mode
-delay_correct = 0.05  # delay between typing - 0.1 is more human like , 0.01 is super fast , 0.0 is GOD mode
-delay_error = 0.3  # pause after wrong value is typed , 0.3 is more human like,  0.01 is super fast , 0.0 is GOD mode
+speed = 0.2  # 0.1 is more human like ,0.05 is faster ,  0.01 is super fast , 0.0 is GOD mode
+delay_correct = random.uniform(0.05, 0.2) # Random delay for correct typing, range can be adjusted
 
 #0.1, 0.12, 0.3
 # Total number of persons in the group
