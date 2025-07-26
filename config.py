@@ -16,11 +16,12 @@ indian_count = 6
 non_indian_count = 0
 
 # Payment Method - "upi" or "upi_id" or "creditcard"
-paymentMethod = "creditcard"
+paymentMethod = "upi"
 
 # if payment method is upi_id , provide UPI ADDRESS
 UPI_ADDRESS = "9999999999@ibl"
 
+emailAddress = "Test@Testemail.com"
 
 card_number = "5376523894009999"  # Card Number for Credit Card Payment
 mmyy = "0628"  # MMYY format for Credit Card Expiry Date
