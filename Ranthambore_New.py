@@ -27,9 +27,8 @@ def main():
 
 def print_instructions():
     print("Press - alt+1 - for filling first and second page")
-    print("Press - alt+2 - for clicking Pay and filling form")
-    print("Press - alt+3 - for mobile number")
-    print("Press - alt+4 - for Payment")
+    print("Press - alt+2 - for clicking Pay , filling form and mobile")
+    print("Press - alt+3 - for Payment")
     print("Press - alt+q - For complete booking")
     print("Press - alt+w - For exiting the script")
 
@@ -41,20 +40,16 @@ def handle_key_press():
         debounce_key("alt+1")  # Wait until the key is released
         return True
     elif keyboard.is_pressed("alt+2"):
-        print("Keys Pressed - alt+2  - for clicking Pay and filling form")
+        print("Keys Pressed - alt+2  - for clicking Pay , filling form and mobile")
         Payment()
         fillVisitorDetails()
+        mobile()
         debounce_key("alt+2")  # Wait until the key is released
         return True
     elif keyboard.is_pressed("alt+3"):
-        print("Keys Pressed - alt+4 - for mobile number")
-        mobile()
-        debounce_key("alt+3")  # Wait until the key is released
-        return True
-    elif keyboard.is_pressed("alt+4"):
-        print("Keys Pressed - alt+5 - for payment")
+        print("Keys Pressed - alt+3 - for payment")
         paymentFinal()
-        debounce_key("alt+4")  # Wait until the key is released
+        debounce_key("alt+3")  # Wait until the key is released
         return True
     elif keyboard.is_pressed("alt+q"):
         print("Keys Pressed - alt+q - for complete booking")
