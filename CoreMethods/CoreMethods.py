@@ -264,7 +264,7 @@ def fillVisitorDetails():
 
    # performFunctionUntilImageIsFound(mobile_image_path,60)
     multiplePressUsingPyAutoGUI('pagedown', 10)
-    pyautogui.click(find_image_on_screen_using_opencv(ContinueGreen_image_path, 60,0.95))
+    pyautogui.click(find_image_on_screen_using_opencv_color(ContinueGreen_image_path, 60,0.95))
     print("Execution Ended (form filling)  At: ", getDateTime())
 
 def mobile():
