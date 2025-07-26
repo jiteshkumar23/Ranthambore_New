@@ -47,7 +47,7 @@ from config import delay_correct, paxOfPerson1, machine, nameOfPerson1, \
     attachmentNameOfPerson13, attachmentNameOfPerson14, attachmentNameOfPerson15, attachmentNameOfPerson16, \
     attachmentNameOfPerson17, attachmentNameOfPerson18, attachmentNameOfPerson19, attachmentNameOfPerson20, \
     mobileNumber, paymentMethod, UPI_ADDRESS, usePluginForVisitorDetails, normalTypingInForm, card_number, mmyy, cvv, \
-    NameOnCard
+    NameOnCard, emailAddress
 
 global image_directory, MorningGypsy_image_path,PleaseSelect_image_path, \
     MorningCanter_image_path,PayButton_image_path,instructions_image_path,agree_image_path,\
@@ -61,7 +61,8 @@ global image_directory, MorningGypsy_image_path,PleaseSelect_image_path, \
     showQR_AfterTiger_image_path, UPI_ID_image_path, UPI_ID_Image2_image_path, gender_dropdown_image_path, \
     id_details_image_path, age_image_path, fullname_image_path, \
     id_proof_not_selected_image_path, emailAddress_image_path, emailAddress_2_image_path, \
-    UPIOnRazorPay_image_path,FileNamePopup_image_path,tiger_image_path,AvailableSeats_image_path
+    UPIOnRazorPay_image_path,FileNamePopup_image_path,tiger_image_path,AvailableSeats_image_path,\
+    ContinueOnEmail_image_path
 
 timeStart1, timeEnd1, timer1 = '0:0:0.0', '0:0:0.0', timer
 timeStart2, timeEnd2, timer2 = '0:0:0.0', '0:0:0.0', timer
@@ -291,6 +292,17 @@ def paymentFinal():
         find_image_on_screen_using_opencv_color(PaymentOptions_image_path, 60)
         time.sleep(0.5)
         pyautogui.click(find_image_on_screen_using_opencv_color(UPIOnRazorPay_image_path, 60, 0.95))
+
+        locationEmail = find_image_on_screen_using_opencv_color(emailAddress_image_path, 1)
+        print (locationEmail)
+        if locationEmail is None:
+            print('email address didn not appear')
+        else:
+            pyautogui.click(locationEmail)
+            human_typing(emailAddress)
+            time.sleep(0.2)
+            pyautogui.click(find_image_on_screen_using_opencv_color(ContinueOnEmail_image_path, 4))
+
         if paymentMethod.lower() == "upi":
             time.sleep(0.2)
             location6 = find_image_on_screen_using_opencv(showQR_image_path, 10)
@@ -721,6 +733,10 @@ def setImagePath():
 
     global ContinueOnCard_image_path
     ContinueOnCard_image_path = os.path.join(image_directory, 'ContinueOnCard.png')
+
+    global ContinueOnEmail_image_path
+    ContinueOnEmail_image_path = os.path.join(image_directory, 'ContinueOnEmail.png')
+
 
 
 
