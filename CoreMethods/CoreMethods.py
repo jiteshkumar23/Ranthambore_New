@@ -16,6 +16,8 @@ import pyperclip
 
 from pyautogui import moveTo
 
+from ScrollTillYouFindImage import scrollTillYouFindImage, scrollTillYouFindImageAndClick
+from ZoneFinder import find_zone_with_scroll, clickOnBookNowForZone
 from config import delay_correct, paxOfPerson1, machine, nameOfPerson1, \
     idTypeOfPerson1, idNumberOfPerson1, genderOfPerson1, paxOfPerson2, nameOfPerson2, idTypeOfPerson2, \
     idNumberOfPerson2, genderOfPerson2, paxOfPerson3, nameOfPerson3, idTypeOfPerson3, \
@@ -47,7 +49,8 @@ from config import delay_correct, paxOfPerson1, machine, nameOfPerson1, \
     attachmentNameOfPerson13, attachmentNameOfPerson14, attachmentNameOfPerson15, attachmentNameOfPerson16, \
     attachmentNameOfPerson17, attachmentNameOfPerson18, attachmentNameOfPerson19, attachmentNameOfPerson20, \
     mobileNumber, paymentMethod, UPI_ADDRESS, usePluginForVisitorDetails, normalTypingInForm, card_number, mmyy, cvv, \
-    NameOnCard, emailAddress
+    NameOnCard, current_advance, student_count,emailAddress
+
 
 global image_directory, MorningGypsy_image_path,PleaseSelect_image_path, \
     MorningCanter_image_path,PayButton_image_path,instructions_image_path,agree_image_path,\
@@ -61,8 +64,13 @@ global image_directory, MorningGypsy_image_path,PleaseSelect_image_path, \
     showQR_AfterTiger_image_path, UPI_ID_image_path, UPI_ID_Image2_image_path, gender_dropdown_image_path, \
     id_details_image_path, age_image_path, fullname_image_path, \
     id_proof_not_selected_image_path, emailAddress_image_path, emailAddress_2_image_path, \
-    UPIOnRazorPay_image_path,FileNamePopup_image_path,tiger_image_path,AvailableSeats_image_path,\
-    ContinueOnEmail_image_path
+    UPIOnRazorPay_image_path,FileNamePopup_image_path,tiger_image_path,AvailableSeats_image_path, \
+    Zone1_image_path, Zone2_image_path, Zone3_image_path, Zone4_image_path, Zone5_image_path, Zone6_image_path, \
+    Zone7_image_path, Zone8_image_path, Zone9_image_path, Zone10_image_path,current_morning_gypsy_image_path,\
+    current_afternoon_gypsy_image_path,current_morning_canter_image_path,current_afternoon_canter_image_path,\
+    advance_morning_gypsy_image_path,advance_afternoon_gypsy_image_path,advance_morning_canter_image_path,\
+    advance_afternoon_canter_image_path,AgreeAndContinue_image_path,close_image_path,ContinueOnEmail_image_path
+
 
 timeStart1, timeEnd1, timer1 = '0:0:0.0', '0:0:0.0', timer
 timeStart2, timeEnd2, timer2 = '0:0:0.0', '0:0:0.0', timer
@@ -85,57 +93,73 @@ timeStart18, timeEnd18, timer18 = '0:0:0.0', '0:0:0.0', timer
 timeStart19, timeEnd19, timer19 = '0:0:0.0', '0:0:0.0', timer
 timeStart20, timeEnd20, timer20 = '0:0:0.0', '0:0:0.0', timer
 
-countOfPersons = indian_count + non_indian_count
+countOfPersons = indian_count + non_indian_count + student_count
 
 
 def fillPage1():
-    print("Hello, this is Page 1")
+    print("Hello, this is Page 1, clicking Inside Page using the Tiger text below")
     pyautogui.click(find_image_on_screen_using_opencv(tiger_image_path, 6))
     time.sleep(0.2)
     # pyautogui.keyDown('alt')
     # pyautogui.press('i')
     # pyautogui.keyUp('alt')
-    autoit.send("!i")
+    pyautogui.click(find_image_on_screen_using_opencv(date_image_path,6,0.95))
     time.sleep(0.75)
     multiplePressUsingPyAutoGUI('pagedown', 1)
     time.sleep(0.5)
-    find_image_on_screen_using_opencv(BookNow_image_path, 10)
-    if zone == "Zone 6":
-        autoit.send("!o")  # Alt + O
-    elif zone == "Zone 7":
-        autoit.send("+1")  # Shift + 1 → "!"
-    elif zone == "Zone 8":
-        autoit.send("+[")  # Shift + [ → depends on layout
-    elif zone == "Zone 9":
-        autoit.send("+3")  # Shift + 3 → "#"
-    elif zone == "Zone 10":
-        autoit.send("+4")  # Shift + 4 → "$"
-    elif zone == "Zone 1":
-        autoit.send("+5")  # Shift + 5 → "%"
+    # find_image_on_screen_using_opencv(BookNow_image_path, 10)
+    # location = find_image_on_screen_using_opencv(zone1_image_path, 10)
+    if zone == "Zone 1":
+        clickOnBookNowForZone(Zone1_image_path,BookNow_image_path)
     elif zone == "Zone 2":
-        autoit.send("+6")  # Shift + 6 → "^"
+        clickOnBookNowForZone(Zone2_image_path,BookNow_image_path)
     elif zone == "Zone 3":
-        autoit.send("+7")  # Shift + 7 → "&"
+        clickOnBookNowForZone(Zone3_image_path,BookNow_image_path)
     elif zone == "Zone 4":
-        autoit.send("+8")  # Shift + 8 → "*"
+        clickOnBookNowForZone(Zone4_image_path,BookNow_image_path)
     elif zone == "Zone 5":
-        autoit.send("+9")  # Shift + 9 → "("
+        clickOnBookNowForZone(Zone5_image_path,BookNow_image_path)
+    elif zone == "Zone 6":
+        clickOnBookNowForZone(Zone6_image_path,BookNow_image_path)
+    elif zone == "Zone 7":
+        clickOnBookNowForZone(Zone7_image_path,BookNow_image_path)
+    elif zone == "Zone 8":
+        clickOnBookNowForZone(Zone8_image_path,BookNow_image_path)
+    elif zone == "Zone 9":
+        clickOnBookNowForZone(Zone9_image_path,BookNow_image_path)
+    elif zone == "Zone 10":
+        clickOnBookNowForZone(Zone10_image_path,BookNow_image_path)
+    else:
+        print("⚠️ Unknown zone label. Please check the input.")
 
 def fillPage2():
     print("Hello, this is Page 2")
     find_image_on_screen_using_opencv(PleaseSelect_image_path, 20)
-    if slot.lower() == "morning gypsy":
-        autoit.send("+0")  # Shift + 0 → ")"
-    elif slot.lower() == "afternoon gypsy":
-        autoit.send("+]")  # Shift + ] → Depending on layout, often "}"
-    elif slot.lower() == "morning canter":
-        autoit.send("+w")  # Shift + W → "W"
-    elif slot.lower() == "afternoon canter":
-        autoit.send("!p")  # Alt + P
+    if current_advance == "current":
+        print("Current is selected")
+        if slot.lower() == "morning gypsy":
+            pyautogui.click(find_image_on_screen_using_opencv(current_morning_gypsy_image_path, 6))
+        elif slot.lower() == "afternoon gypsy":
+            pyautogui.click(find_image_on_screen_using_opencv(current_afternoon_gypsy_image_path, 6))
+        elif slot.lower() == "morning canter":
+            pyautogui.click(find_image_on_screen_using_opencv(current_morning_canter_image_path, 6))
+        elif slot.lower() == "afternoon canter":
+            pyautogui.click(find_image_on_screen_using_opencv(current_afternoon_canter_image_path, 6))
+
+    elif current_advance == "advance":
+        print("Advance is selected")
+        if slot.lower() == "morning gypsy":
+            pyautogui.click(find_image_on_screen_using_opencv(advance_morning_gypsy_image_path, 6))
+        elif slot.lower() == "afternoon gypsy":
+            pyautogui.click(find_image_on_screen_using_opencv(advance_afternoon_gypsy_image_path, 6))
+        elif slot.lower() == "morning canter":
+            pyautogui.click(find_image_on_screen_using_opencv(advance_morning_canter_image_path, 6))
+        elif slot.lower() == "afternoon canter":
+            pyautogui.click(find_image_on_screen_using_opencv(advance_afternoon_canter_image_path, 6))
 
     time.sleep(1)
     pyautogui.click(find_image_on_screen_using_opencv(AvailableSeats_image_path, 6))
-    time.sleep(0.5)
+    time.sleep(0.4)
     multiplePressUsingPyAutoGUI('tab',2)
     if indian_count > 0:
         multiplePressUsingPyAutoGUI('backspace', 1)
@@ -148,22 +172,30 @@ def fillPage2():
         time.sleep(0.2)
         pyautogui.typewrite(str(non_indian_count))
         time.sleep(0.2)
+    multiplePressUsingPyAutoGUI('tab', 1)
+    if student_count > 0:
+        multiplePressUsingPyAutoGUI('backspace', 1)
+        time.sleep(0.2)
+        pyautogui.typewrite(str(student_count))
+        time.sleep(0.2)
     time.sleep(0.5)
     pyautogui.click(find_image_on_screen_using_opencv(OK_image_path, 6))
+    autoit.send("{ENTER}")
 
 
 def Payment():
     pyautogui.click(find_image_on_screen_using_opencv(PayButton_image_path, 6))
-    time.sleep(0.2)
+    time.sleep(0.25)
 
-    find_image_on_screen_using_opencv(instructions_image_path, 6)
-    time.sleep(0.2)
-    autoit.send("!u")  # Alt + Q
+    multiplePressUsingPyAutoGUI('pagedown', 5)
 
-    multiplePressUsingPyAutoGUI('pagedown', 1)
-    time.sleep(0.1)
-    # pyautogui.click(find_image_on_screen_using_opencv(agree_image_path, 6))
-    autoit.send("!r")  # Alt + R
+    scrollTillYouFindImage(close_image_path)
+    pyautogui.click(find_image_on_screen_using_opencv(instructions_image_path, 6))
+
+    # pyautogui.click(find_image_on_screen_using_opencv_color(AgreeAndContinue_image_path, 6))
+    scrollTillYouFindImageAndClick(AgreeAndContinue_image_path)
+    time.sleep(0.4)
+
 
 
 def fillVisitorDetails():
@@ -192,7 +224,7 @@ def fillVisitorDetails():
             speed_for_first_page(speed)
 
             print('about to press alt+m')
-            autoit.send("!m")  # Alt + M
+            autoit.send("!m")  #
 
             find_image_on_screen_using_opencv_color(FileNamePopup_image_path, 5)
             time.sleep(0.2)
@@ -200,7 +232,7 @@ def fillVisitorDetails():
             pyperclip.copy(person['attachmentName'])
             autoit.send("^v")  # Ctrl + V
             autoit.send("{ENTER}")  # Press Enter
-            time.sleep(2)
+            time.sleep(2.75)
 
     else:
         for i in range(int(countOfPersons)):
@@ -737,7 +769,68 @@ def setImagePath():
     global ContinueOnEmail_image_path
     ContinueOnEmail_image_path = os.path.join(image_directory, 'ContinueOnEmail.png')
 
+    global date_image_path
+    date_image_path = os.path.join(image_directory, 'date.png')
 
+    global Zone1_image_path
+    Zone1_image_path = os.path.join(image_directory, 'Zone1.png')
+
+    global Zone2_image_path
+    Zone2_image_path = os.path.join(image_directory, 'Zone2.png')
+
+    global Zone3_image_path
+    Zone3_image_path = os.path.join(image_directory, 'Zone3.png')
+
+    global Zone4_image_path
+    Zone4_image_path = os.path.join(image_directory, 'Zone4.png')
+
+    global Zone5_image_path
+    Zone5_image_path = os.path.join(image_directory, 'Zone5.png')
+
+    global Zone6_image_path
+    Zone6_image_path = os.path.join(image_directory, 'Zone6.png')
+
+    global Zone7_image_path
+    Zone7_image_path = os.path.join(image_directory, 'Zone7.png')
+
+    global Zone8_image_path
+    Zone8_image_path = os.path.join(image_directory, 'Zone8.png')
+
+    global Zone9_image_path
+    Zone9_image_path = os.path.join(image_directory, 'Zone9.png')
+
+    global Zone10_image_path
+    Zone10_image_path = os.path.join(image_directory, 'Zone10.png')
+
+    global current_morning_gypsy_image_path
+    current_morning_gypsy_image_path = os.path.join(image_directory, 'current_morning_gypsy.png')
+
+    global current_afternoon_gypsy_image_path
+    current_afternoon_gypsy_image_path = os.path.join(image_directory, 'current_afternoon_gypsy.png')
+
+    global current_morning_canter_image_path
+    current_morning_canter_image_path = os.path.join(image_directory, 'current_morning_canter.png')
+
+    global current_afternoon_canter_image_path
+    current_afternoon_canter_image_path = os.path.join(image_directory, 'current_afternoon_canter.png')
+
+    global advance_morning_gypsy_image_path
+    advance_morning_gypsy_image_path = os.path.join(image_directory, 'advance_morning_gypsy.png')
+
+    global advance_afternoon_gypsy_image_path
+    advance_afternoon_gypsy_image_path = os.path.join(image_directory, 'advance_afternoon_gypsy.png')
+
+    global advance_morning_canter_image_path
+    advance_morning_canter_image_path = os.path.join(image_directory, 'advance_morning_canter.png')
+
+    global advance_afternoon_canter_image_path
+    advance_afternoon_canter_image_path = os.path.join(image_directory, 'advance_afternoon_canter.png')
+
+    global AgreeAndContinue_image_path
+    AgreeAndContinue_image_path = os.path.join(image_directory, 'AgreeAndContinue.png')
+
+    global close_image_path
+    close_image_path = os.path.join(image_directory, 'close.png')
 
 
 def days_difference_with_checkInDate(checkOutDate1):
