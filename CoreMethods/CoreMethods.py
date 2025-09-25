@@ -69,7 +69,8 @@ global image_directory, MorningGypsy_image_path,PleaseSelect_image_path, \
     Zone7_image_path, Zone8_image_path, Zone9_image_path, Zone10_image_path,current_morning_gypsy_image_path,\
     current_afternoon_gypsy_image_path,current_morning_canter_image_path,current_afternoon_canter_image_path,\
     advance_morning_gypsy_image_path,advance_afternoon_gypsy_image_path,advance_morning_canter_image_path,\
-    advance_afternoon_canter_image_path,AgreeAndContinue_image_path,close_image_path,ContinueOnEmail_image_path
+    advance_afternoon_canter_image_path,AgreeAndContinue_image_path,close_image_path,ContinueOnEmail_image_path,\
+    pay_after_mobile_image_path,Proceed_to_pay_image_path
 
 
 timeStart1, timeEnd1, timer1 = '0:0:0.0', '0:0:0.0', timer
@@ -297,13 +298,20 @@ def fillVisitorDetails():
 
    # performFunctionUntilImageIsFound(mobile_image_path,60)
     multiplePressUsingPyAutoGUI('pagedown', 10)
-    pyautogui.click(find_image_on_screen_using_opencv_color(ContinueGreen_image_path, 60,0.95))
+    pyautogui.click(find_image_on_screen_using_opencv_color(ContinueGreen_image_path, 120,0.95))
+    time.sleep(0.2)
+    autoit.send("{ENTER}")
     print("Execution Ended (form filling)  At: ", getDateTime())
 
 def mobile():
     pyautogui.click(find_image_on_screen_using_opencv(mobile_image_path, 10))
     # autoit.send(mobileNumber)
     human_typing(mobileNumber)
+    time.sleep(0.2)
+    autoit.send("{TAB}")
+    time.sleep(0.2)
+    autoit.send("{ENTER}")
+    pyautogui.click(find_image_on_screen_using_opencv(pay_after_mobile_image_path, 10))
     # pyautogui.click(find_image_on_screen_using_opencv_color(PayAfterMobile_image_path, 60,0.95))
 
 
@@ -322,18 +330,18 @@ def paymentFinal():
         autoit.send("{ENTER}")
         print("clicked on Pay Now button")
         find_image_on_screen_using_opencv_color(PaymentOptions_image_path, 60)
-        time.sleep(0.5)
-        pyautogui.click(find_image_on_screen_using_opencv_color(UPIOnRazorPay_image_path, 60, 0.95))
-
-        locationEmail = find_image_on_screen_using_opencv_color(emailAddress_image_path, 1)
-        print (locationEmail)
-        if locationEmail is None:
-            print('email address didn not appear')
-        else:
-            pyautogui.click(locationEmail)
-            human_typing(emailAddress)
-            time.sleep(0.2)
-            pyautogui.click(find_image_on_screen_using_opencv_color(ContinueOnEmail_image_path, 4))
+        # time.sleep(0.5)
+        # pyautogui.click(find_image_on_screen_using_opencv_color(UPIOnRazorPay_image_path, 60, 0.95))
+        #
+        # locationEmail = find_image_on_screen_using_opencv_color(emailAddress_image_path, 1)
+        # print (locationEmail)
+        # if locationEmail is None:
+        #     print('email address didn not appear')
+        # else:
+        #     pyautogui.click(locationEmail)
+        #     human_typing(emailAddress)
+        #     time.sleep(0.2)
+        #     pyautogui.click(find_image_on_screen_using_opencv_color(ContinueOnEmail_image_path, 4))
 
         if paymentMethod.lower() == "upi":
             time.sleep(0.2)
@@ -345,12 +353,17 @@ def paymentFinal():
             print("UPI_ID was displayed")
             pyautogui.click(location6)
             time.sleep(0.1)
-            pyperclip.copy(UPI_ADDRESS)
-            autoit.send("^v")
-            time.sleep(0.25)
-            autoit.send("{TAB}")
+            location6 = find_image_on_screen_using_opencv(Proceed_to_pay_image_path, 10)
+            print("UPI_ID was displayed")
+            pyautogui.click(location6)
             time.sleep(0.1)
-            autoit.send("{ENTER}")
+
+            # pyperclip.copy(UPI_ADDRESS)
+            # autoit.send("^v")
+            # time.sleep(0.25)
+            # autoit.send("{TAB}")
+            # time.sleep(0.1)
+            # autoit.send("{ENTER}")
     elif paymentMethod.lower() == "creditcard":
         location7 = find_image_on_screen_using_opencv(creditcard_image_path, 10)
         pyautogui.click(location7)
@@ -832,6 +845,13 @@ def setImagePath():
     global close_image_path
     close_image_path = os.path.join(image_directory, 'close.png')
 
+    global pay_after_mobile_image_path
+    pay_after_mobile_image_path = os.path.join(image_directory, 'pay_after_mobile.png')
+
+    global Proceed_to_pay_image_path
+    Proceed_to_pay_image_path = os.path.join(image_directory, 'Proceed_to_pay.png')
+
+
 
 def days_difference_with_checkInDate(checkOutDate1):
     # Define the dates
@@ -886,11 +906,15 @@ def selectIdentityProofDropdown(case_value):
         autoit.send("{ENTER}")
     elif val in ["indian voter card", "indian voter id", "voter card", "voter id"]:
         multiplePressUsingPyAutoGUI('down', 1)
-        pyautogui.typewrite("ind")
+        pyautogui.typewrite("indian v")
         autoit.send("{ENTER}")
     elif val == "pan card":
         multiplePressUsingPyAutoGUI('down', 1)
         pyautogui.typewrite("pan")
+        autoit.send("{ENTER}")
+    elif val in ["indian student id", "student id"]:
+        multiplePressUsingPyAutoGUI('down', 1)
+        pyautogui.typewrite("indian s")
         autoit.send("{ENTER}")
 
 def selectGenderDropdown(case_value):

@@ -37,11 +37,11 @@ def handle_key_press():
         print("Keys Pressed - alt+1 - For filling first and second page")
         fillPage1()
         fillPage2()
+        Payment()
         debounce_key("alt+1")  # Wait until the key is released
         return True
     elif keyboard.is_pressed("alt+2"):
         print("Keys Pressed - alt+2  - for clicking Pay , filling form and mobile")
-        Payment()
         fillVisitorDetails()
         mobile()
         debounce_key("alt+2")  # Wait until the key is released
