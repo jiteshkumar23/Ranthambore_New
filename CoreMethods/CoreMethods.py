@@ -70,7 +70,7 @@ global image_directory, MorningGypsy_image_path,PleaseSelect_image_path, \
     advance_morning_gypsy_image_path,advance_afternoon_gypsy_image_path,advance_morning_canter_image_path,\
     advance_afternoon_canter_image_path,AgreeAndContinue_image_path,close_image_path,ContinueOnEmail_image_path,\
     pay_after_mobile_image_path,Proceed_to_pay_image_path,tatkal_morning_gypsy_image_path,\
-    tatkal_afternoon_gypsy_image_path
+    tatkal_afternoon_gypsy_image_path,Add_Another_image_path
 
 
 timeStart1, timeEnd1, timer1 = '0:0:0.0', '0:0:0.0', timer
@@ -135,10 +135,6 @@ def fillPage1():
 
 def fillPage2():
     print("Hello, this is Page 2")
-    total_tatkal_count = tatkal_indian + tatkal_non_indian
-    print(f"total_tatkal_count is {total_tatkal_count}")
-    print(f"tatkal_indian is {tatkal_indian}")
-    print(f"tatkal_non_indian is {tatkal_non_indian}")
     find_image_on_screen_using_opencv(PleaseSelect_image_path, 20)
     if current_advance == "current":
         print("Current is selected")
@@ -164,6 +160,10 @@ def fillPage2():
 
     elif current_advance == "tatkal":
         print("Tatkal is selected")
+        total_tatkal_count = tatkal_indian + tatkal_non_indian
+        print(f"total_tatkal_count is {total_tatkal_count}")
+        print(f"tatkal_indian is {tatkal_indian}")
+        print(f"tatkal_non_indian is {tatkal_non_indian}")
         if slot.lower() == "morning gypsy":
             pyautogui.click(find_image_on_screen_using_opencv(tatkal_morning_gypsy_image_path, 6))
         elif slot.lower() == "afternoon gypsy":
@@ -204,15 +204,18 @@ def fillPage2():
 
 def Payment():
     pyautogui.click(find_image_on_screen_using_opencv(PayButton_image_path, 6))
-    time.sleep(0.25)
+    time.sleep(0.5)
 
-    multiplePressUsingPyAutoGUI('pagedown', 5)
+    multiplePressUsingPyAutoGUI('pagedown', 10)
 
     scrollTillYouFindImage(close_image_path)
-    pyautogui.click(find_image_on_screen_using_opencv(instructions_image_path, 6))
+    pyautogui.click(find_image_on_screen_using_opencv(instructions_image_path, 6,0.6))
 
     # pyautogui.click(find_image_on_screen_using_opencv_color(AgreeAndContinue_image_path, 6))
-    scrollTillYouFindImageAndClick(AgreeAndContinue_image_path)
+    autoit.send("{TAB}")
+    autoit.send("{TAB}")
+    autoit.send("{ENTER}")
+    # scrollTillYouFindImageAndClick(AgreeAndContinue_image_path)
     time.sleep(0.4)
 
 
@@ -875,7 +878,8 @@ def setImagePath():
     global tatkal_afternoon_gypsy_image_path
     tatkal_afternoon_gypsy_image_path = os.path.join(image_directory, 'tatkal_afternoon_gypsy.png')
 
-
+    global Add_Another_image_path
+    Add_Another_image_path = os.path.join(image_directory, 'Add_Another.png')
 
 
 def days_difference_with_checkInDate(checkOutDate1):
@@ -1330,6 +1334,9 @@ def is_button_enabled(image_path, expected_color_lower, expected_color_upper, sa
     return False
 
 def fillVisitorDetailsForTatkal():
+    print("filling person details for Tatkal")
+    total_tatkal_count = tatkal_indian + tatkal_non_indian
+    print(f"total_tatkal_count is {total_tatkal_count}")
     global flag
     print(usePluginForVisitorDetails)
     print("Hello, this is Visitor Details")
@@ -1350,7 +1357,7 @@ def fillVisitorDetailsForTatkal():
         autoit.send("!k")  # Alt + K
         time.sleep(1)
 
-        for i in range(int(countOfPersons)):
+        for i in range(int(total_tatkal_count)):
             person = persons_list[i]
             speed_for_first_page(speed)
 
@@ -1366,10 +1373,14 @@ def fillVisitorDetailsForTatkal():
             time.sleep(2.75)
 
     else:
-        for i in range(int(countOfPersons)):
+        for i in range(int(total_tatkal_count)):
             person = persons_list[i]
             # Set time Start here
             speed_for_first_page(speed)
+            if i == 0:
+                print("not clicking add another")
+            else:
+                pyautogui.click(find_image_on_screen_using_opencv(Add_Another_image_path, 10))
             if flag2:
                 human_typing(person['name'].strip())
             else:
@@ -1420,11 +1431,11 @@ def fillVisitorDetailsForTatkal():
             autoit.send("^v")
             autoit.send("{ENTER}")
             time.sleep(2)
-            if i == int(countOfPersons) - 1:
-                print("No Tabs")
-            else:
-                autoit.send("{TAB}")
-                autoit.send("{TAB}")
+            # if i == int(total_tatkal_count) - 1:
+            #     print("No Tabs")
+            # else:
+            #     autoit.send("{TAB}")
+            #     autoit.send("{TAB}")
 
    # performFunctionUntilImageIsFound(mobile_image_path,60)
     multiplePressUsingPyAutoGUI('pagedown', 10)

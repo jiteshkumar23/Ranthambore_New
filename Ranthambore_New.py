@@ -4,7 +4,8 @@ import time
 import keyboard
 
 from CoreMethods.CoreMethods import (debounce_key, setImagePath, fillPage1, fillPage2, Payment,
-                                     fillVisitorDetails, mobile, paymentFinal)
+                                     fillVisitorDetails, mobile, paymentFinal, fillVisitorDetailsForTatkal)
+from config import current_advance
 
 
 def exit_program():
@@ -42,7 +43,10 @@ def handle_key_press():
         return True
     elif keyboard.is_pressed("alt+2"):
         print("Keys Pressed - alt+2  - for clicking Pay , filling form and mobile")
-        fillVisitorDetails()
+        if current_advance == "tatkal":
+            fillVisitorDetailsForTatkal()
+        else:
+            fillVisitorDetails()
         mobile()
         debounce_key("alt+2")  # Wait until the key is released
         return True
@@ -56,7 +60,10 @@ def handle_key_press():
         fillPage1()
         fillPage2()
         Payment()
-        fillVisitorDetails()
+        if current_advance == "tatkal":
+            fillVisitorDetailsForTatkal()
+        else:
+            fillVisitorDetails()
         mobile()
         paymentFinal()
         debounce_key("alt+q")  # Wait until the key is released
