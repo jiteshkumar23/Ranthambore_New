@@ -2,25 +2,26 @@
 import random
 
 machine = "desktop"
+dateClick = "No" # "Yes" or "No"
 
 usePluginForVisitorDetails = "No"  # "Yes" or "No"
 
 normalTypingInForm = "Yes"  # "Yes" or "No"
 
-zone = "Zone 6" # "Zone 1"
+zone = "Zone 10" # "Zone 1"
 
-current_advance = "tatkal" # "current" , "advance" , "tatkal"
+current_advance = "advance" # "current" , "advance" , "tatkal"
 
-slot = "Afternoon Gypsy" # "Morning Gypsy", "Afternoon Gypsy", "Morning Canter", "Afternoon Canter"
+slot = "Afternoon Canter" # "Morning Gypsy", "Afternoon Gypsy", "Morning Canter", "Afternoon Canter"
 
 mobileNumber = "92698565536"  # Mobile Number of the person booking the safari
 
-indian_count = 6  # for advance and current
+indian_count = 6 # for advance and current
 non_indian_count = 0   # for advance and current
 student_count = 0     # for advance and current
 
-tatkal_indian = 2   # one of these two will always be zero
-tatkal_non_indian = 0  # one of these two will always be zero
+tatkal_indian = 6   # one of these two will always be zero
+tatkal_non_indian = 0 # one of these two will always be zero
 
 # Payment Method - "upi" or "upi_id" or "creditcard"
 paymentMethod = "upi"
@@ -36,7 +37,7 @@ cvv = "337"  # CVV for Credit Card Payment
 NameOnCard = "Raj Kumar"  # Name on the Credit Card
 
 # Details of 20 Passengers
-paxOfPerson1 = "Foreigner"  # "Indian" , "Foreigner"
+paxOfPerson1 = "Indian"  # "Indian" , "Foreigner"
 nameOfPerson1 = "Nicola Stiffan"
 idTypeOfPerson1 = "Passport"
 idNumberOfPerson1 = "YC2265029"
@@ -44,7 +45,7 @@ genderOfPerson1 = "Male"  # "Male", "Female"
 ageOfPerson1 = "44"
 attachmentNameOfPerson1 = r"C:\Users\user\Desktop\Photos\Photo1"
 
-paxOfPerson2 = "Foreigner"
+paxOfPerson2 = "Indian"
 nameOfPerson2 = "Jessica Gordon"
 idTypeOfPerson2 = "Passport"
 idNumberOfPerson2 = "YA9660282"

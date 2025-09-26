@@ -49,7 +49,7 @@ from config import delay_correct, paxOfPerson1, machine, nameOfPerson1, \
     attachmentNameOfPerson13, attachmentNameOfPerson14, attachmentNameOfPerson15, attachmentNameOfPerson16, \
     attachmentNameOfPerson17, attachmentNameOfPerson18, attachmentNameOfPerson19, attachmentNameOfPerson20, \
     mobileNumber, paymentMethod, UPI_ADDRESS, usePluginForVisitorDetails, normalTypingInForm, card_number, mmyy, cvv, \
-    NameOnCard, current_advance, student_count, emailAddress, tatkal_indian, tatkal_non_indian
+    NameOnCard, current_advance, student_count, emailAddress, tatkal_indian, tatkal_non_indian, dateClick
 
 global image_directory, MorningGypsy_image_path,PleaseSelect_image_path, \
     MorningCanter_image_path,PayButton_image_path,instructions_image_path,agree_image_path,\
@@ -104,7 +104,8 @@ def fillPage1():
     # pyautogui.keyDown('alt')
     # pyautogui.press('i')
     # pyautogui.keyUp('alt')
-    pyautogui.click(find_image_on_screen_using_opencv(date_image_path,6,0.95))
+    if dateClick.lower() == "yes":
+        pyautogui.click(find_image_on_screen_using_opencv(date_image_path,6,0.95))
     time.sleep(0.75)
     multiplePressUsingPyAutoGUI('pagedown', 1)
     time.sleep(0.5)
@@ -173,33 +174,42 @@ def fillPage2():
     pyautogui.click(find_image_on_screen_using_opencv(AvailableSeats_image_path, 6))
     time.sleep(0.4)
     multiplePressUsingPyAutoGUI('tab',2)
-    if indian_count > 0:
-        multiplePressUsingPyAutoGUI('backspace', 1)
-        time.sleep(0.2)
-        if current_advance == "tatkal" and tatkal_indian > 0:
+    if current_advance == "tatkal" :
+        if tatkal_indian > 0:
+            multiplePressUsingPyAutoGUI('backspace', 1)
+            time.sleep(0.2)
             pyautogui.typewrite("6")
-        else:
+            time.sleep(0.2)
+        elif tatkal_non_indian > 0:
+            multiplePressUsingPyAutoGUI('tab', 1)
+            multiplePressUsingPyAutoGUI('backspace', 1)
+            time.sleep(0.2)
+            pyautogui.typewrite("6")
+            time.sleep(0.2)
+    else:
+        if indian_count > 0:
+            multiplePressUsingPyAutoGUI('backspace', 1)
+            time.sleep(0.2)
             pyautogui.typewrite(str(indian_count))
-
-        time.sleep(0.2)
-    multiplePressUsingPyAutoGUI('tab', 1)
-    if non_indian_count > 0:
-        multiplePressUsingPyAutoGUI('backspace', 1)
-        time.sleep(0.2)
-        if current_advance == "tatkal" and tatkal_non_indian > 0:
-            pyautogui.typewrite("6")
-        else:
+            time.sleep(0.2)
+        multiplePressUsingPyAutoGUI('tab', 1)
+        if non_indian_count > 0:
+            multiplePressUsingPyAutoGUI('backspace', 1)
+            time.sleep(0.2)
             pyautogui.typewrite(str(non_indian_count))
-        time.sleep(0.2)
-    multiplePressUsingPyAutoGUI('tab', 1)
-    if student_count > 0:
-        multiplePressUsingPyAutoGUI('backspace', 1)
-        time.sleep(0.2)
-        pyautogui.typewrite(str(student_count))
-        time.sleep(0.2)
+            time.sleep(0.2)
+        multiplePressUsingPyAutoGUI('tab', 1)
+        if student_count > 0:
+            multiplePressUsingPyAutoGUI('backspace', 1)
+            time.sleep(0.2)
+            pyautogui.typewrite(str(student_count))
+            time.sleep(0.2)
     time.sleep(0.5)
     pyautogui.click(find_image_on_screen_using_opencv(OK_image_path, 6))
     autoit.send("{ENTER}")
+
+
+
 
 
 def Payment():
@@ -207,8 +217,8 @@ def Payment():
     time.sleep(0.5)
 
     multiplePressUsingPyAutoGUI('pagedown', 10)
-
-    scrollTillYouFindImage(close_image_path)
+    time.sleep(0.2)
+    # scrollTillYouFindImage(close_image_path)
     pyautogui.click(find_image_on_screen_using_opencv(instructions_image_path, 6,0.6))
 
     # pyautogui.click(find_image_on_screen_using_opencv_color(AgreeAndContinue_image_path, 6))
@@ -221,10 +231,13 @@ def Payment():
 
 
 def fillVisitorDetails():
+    pyautogui.click(pyautogui.size().width // 2, pyautogui.size().height // 2)
     global flag
     print(usePluginForVisitorDetails)
     print("Hello, this is Visitor Details")
     print("Execution Started At: ", getDateTime())
+    for _ in range(3):
+        pyautogui.press('up')
     pyautogui.click(find_image_on_screen_using_opencv(Visitor1_image_path, 10))
     multiplePressUsingPyAutoGUI('tab',2)
     persons_list = get_persons_list()
@@ -1334,6 +1347,7 @@ def is_button_enabled(image_path, expected_color_lower, expected_color_upper, sa
     return False
 
 def fillVisitorDetailsForTatkal():
+    pyautogui.click(pyautogui.size().width // 2, pyautogui.size().height // 2)
     print("filling person details for Tatkal")
     total_tatkal_count = tatkal_indian + tatkal_non_indian
     print(f"total_tatkal_count is {total_tatkal_count}")
@@ -1341,6 +1355,8 @@ def fillVisitorDetailsForTatkal():
     print(usePluginForVisitorDetails)
     print("Hello, this is Visitor Details")
     print("Execution Started At: ", getDateTime())
+    for _ in range(3):
+        pyautogui.press('up')
     pyautogui.click(find_image_on_screen_using_opencv(Visitor1_image_path, 10))
     multiplePressUsingPyAutoGUI('tab',2)
     persons_list = get_persons_list()
@@ -1380,7 +1396,11 @@ def fillVisitorDetailsForTatkal():
             if i == 0:
                 print("not clicking add another")
             else:
-                pyautogui.click(find_image_on_screen_using_opencv(Add_Another_image_path, 10))
+                for _ in range(2):
+                    pyautogui.press('down')
+                time.sleep(0.1)
+                pyautogui.click(find_image_on_screen_using_opencv(Add_Another_image_path, 10,0.6))
+                time.sleep(0.3)
             if flag2:
                 human_typing(person['name'].strip())
             else:
