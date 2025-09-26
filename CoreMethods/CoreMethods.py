@@ -70,7 +70,7 @@ global image_directory, MorningGypsy_image_path,PleaseSelect_image_path, \
     advance_morning_gypsy_image_path,advance_afternoon_gypsy_image_path,advance_morning_canter_image_path,\
     advance_afternoon_canter_image_path,AgreeAndContinue_image_path,close_image_path,ContinueOnEmail_image_path,\
     pay_after_mobile_image_path,Proceed_to_pay_image_path,tatkal_morning_gypsy_image_path,\
-    tatkal_afternoon_gypsy_image_path,Add_Another_image_path
+    tatkal_afternoon_gypsy_image_path,Add_Another_image_path,CloseAfterForm_image_path
 
 
 timeStart1, timeEnd1, timer1 = '0:0:0.0', '0:0:0.0', timer
@@ -894,6 +894,8 @@ def setImagePath():
     global Add_Another_image_path
     Add_Another_image_path = os.path.join(image_directory, 'Add_Another.png')
 
+    global CloseAfterForm_image_path
+    CloseAfterForm_image_path = os.path.join(image_directory, 'CloseAfterForm.png')
 
 def days_difference_with_checkInDate(checkOutDate1):
     # Define the dates
@@ -1463,3 +1465,8 @@ def fillVisitorDetailsForTatkal():
     time.sleep(0.2)
     autoit.send("{ENTER}")
     print("Execution Ended (form filling)  At: ", getDateTime())
+
+def clickClose():
+    pyautogui.click(find_image_on_screen_using_opencv_color(CloseAfterForm_image_path, 3, 0.7))
+    time.sleep(0.2)
+    autoit.send("{ENTER}")

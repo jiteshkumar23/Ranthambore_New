@@ -4,7 +4,7 @@ import time
 import keyboard
 
 from CoreMethods.CoreMethods import (debounce_key, setImagePath, fillPage1, fillPage2, Payment,
-                                     fillVisitorDetails, mobile, paymentFinal, fillVisitorDetailsForTatkal)
+                                     fillVisitorDetails, mobile, paymentFinal, fillVisitorDetailsForTatkal, clickClose)
 from config import current_advance
 
 
@@ -47,6 +47,7 @@ def handle_key_press():
             fillVisitorDetailsForTatkal()
         else:
             fillVisitorDetails()
+        clickClose()
         mobile()
         debounce_key("alt+2")  # Wait until the key is released
         return True
@@ -64,6 +65,7 @@ def handle_key_press():
             fillVisitorDetailsForTatkal()
         else:
             fillVisitorDetails()
+        clickClose()
         mobile()
         paymentFinal()
         debounce_key("alt+q")  # Wait until the key is released
