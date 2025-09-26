@@ -49,8 +49,7 @@ from config import delay_correct, paxOfPerson1, machine, nameOfPerson1, \
     attachmentNameOfPerson13, attachmentNameOfPerson14, attachmentNameOfPerson15, attachmentNameOfPerson16, \
     attachmentNameOfPerson17, attachmentNameOfPerson18, attachmentNameOfPerson19, attachmentNameOfPerson20, \
     mobileNumber, paymentMethod, UPI_ADDRESS, usePluginForVisitorDetails, normalTypingInForm, card_number, mmyy, cvv, \
-    NameOnCard, current_advance, student_count,emailAddress
-
+    NameOnCard, current_advance, student_count, emailAddress, tatkal_indian, tatkal_non_indian
 
 global image_directory, MorningGypsy_image_path,PleaseSelect_image_path, \
     MorningCanter_image_path,PayButton_image_path,instructions_image_path,agree_image_path,\
@@ -70,7 +69,8 @@ global image_directory, MorningGypsy_image_path,PleaseSelect_image_path, \
     current_afternoon_gypsy_image_path,current_morning_canter_image_path,current_afternoon_canter_image_path,\
     advance_morning_gypsy_image_path,advance_afternoon_gypsy_image_path,advance_morning_canter_image_path,\
     advance_afternoon_canter_image_path,AgreeAndContinue_image_path,close_image_path,ContinueOnEmail_image_path,\
-    pay_after_mobile_image_path,Proceed_to_pay_image_path
+    pay_after_mobile_image_path,Proceed_to_pay_image_path,tatkal_morning_gypsy_image_path,\
+    tatkal_afternoon_gypsy_image_path
 
 
 timeStart1, timeEnd1, timer1 = '0:0:0.0', '0:0:0.0', timer
@@ -135,6 +135,10 @@ def fillPage1():
 
 def fillPage2():
     print("Hello, this is Page 2")
+    total_tatkal_count = tatkal_indian + tatkal_non_indian
+    print(f"total_tatkal_count is {total_tatkal_count}")
+    print(f"tatkal_indian is {tatkal_indian}")
+    print(f"tatkal_non_indian is {tatkal_non_indian}")
     find_image_on_screen_using_opencv(PleaseSelect_image_path, 20)
     if current_advance == "current":
         print("Current is selected")
@@ -158,6 +162,13 @@ def fillPage2():
         elif slot.lower() == "afternoon canter":
             pyautogui.click(find_image_on_screen_using_opencv(advance_afternoon_canter_image_path, 6))
 
+    elif current_advance == "tatkal":
+        print("Tatkal is selected")
+        if slot.lower() == "morning gypsy":
+            pyautogui.click(find_image_on_screen_using_opencv(tatkal_morning_gypsy_image_path, 6))
+        elif slot.lower() == "afternoon gypsy":
+            pyautogui.click(find_image_on_screen_using_opencv(tatkal_afternoon_gypsy_image_path, 6))
+
     time.sleep(1)
     pyautogui.click(find_image_on_screen_using_opencv(AvailableSeats_image_path, 6))
     time.sleep(0.4)
@@ -165,13 +176,20 @@ def fillPage2():
     if indian_count > 0:
         multiplePressUsingPyAutoGUI('backspace', 1)
         time.sleep(0.2)
-        pyautogui.typewrite(str(indian_count))
+        if current_advance == "tatkal" and tatkal_indian > 0:
+            pyautogui.typewrite("6")
+        else:
+            pyautogui.typewrite(str(indian_count))
+
         time.sleep(0.2)
     multiplePressUsingPyAutoGUI('tab', 1)
     if non_indian_count > 0:
         multiplePressUsingPyAutoGUI('backspace', 1)
         time.sleep(0.2)
-        pyautogui.typewrite(str(non_indian_count))
+        if current_advance == "tatkal" and tatkal_non_indian > 0:
+            pyautogui.typewrite("6")
+        else:
+            pyautogui.typewrite(str(non_indian_count))
         time.sleep(0.2)
     multiplePressUsingPyAutoGUI('tab', 1)
     if student_count > 0:
@@ -851,6 +869,13 @@ def setImagePath():
     global Proceed_to_pay_image_path
     Proceed_to_pay_image_path = os.path.join(image_directory, 'Proceed_to_pay.png')
 
+    global tatkal_morning_gypsy_image_path
+    tatkal_morning_gypsy_image_path = os.path.join(image_directory, 'tatkal_morning_gypsy.png')
+
+    global tatkal_afternoon_gypsy_image_path
+    tatkal_afternoon_gypsy_image_path = os.path.join(image_directory, 'tatkal_afternoon_gypsy.png')
+
+
 
 
 def days_difference_with_checkInDate(checkOutDate1):
@@ -1303,3 +1328,107 @@ def is_button_enabled(image_path, expected_color_lower, expected_color_upper, sa
         time.sleep(0.1)
     print("Button image not found within timeout.")
     return False
+
+def fillVisitorDetailsForTatkal():
+    global flag
+    print(usePluginForVisitorDetails)
+    print("Hello, this is Visitor Details")
+    print("Execution Started At: ", getDateTime())
+    pyautogui.click(find_image_on_screen_using_opencv(Visitor1_image_path, 10))
+    multiplePressUsingPyAutoGUI('tab',2)
+    persons_list = get_persons_list()
+    if usePluginForVisitorDetails.lower() == "yes":
+        flag = True
+    else:
+        flag = False
+
+    if normalTypingInForm.lower() == "yes":
+        flag2 = True
+    else:
+        flag2 = False
+    if flag:
+        autoit.send("!k")  # Alt + K
+        time.sleep(1)
+
+        for i in range(int(countOfPersons)):
+            person = persons_list[i]
+            speed_for_first_page(speed)
+
+            print('about to press alt+m')
+            autoit.send("!m")  #
+
+            find_image_on_screen_using_opencv_color(FileNamePopup_image_path, 5)
+            time.sleep(0.2)
+
+            pyperclip.copy(person['attachmentName'])
+            autoit.send("^v")  # Ctrl + V
+            autoit.send("{ENTER}")  # Press Enter
+            time.sleep(2.75)
+
+    else:
+        for i in range(int(countOfPersons)):
+            person = persons_list[i]
+            # Set time Start here
+            speed_for_first_page(speed)
+            if flag2:
+                human_typing(person['name'].strip())
+            else:
+                pyperclip.copy(person['name'].strip())
+                autoit.send("^v")
+            speed_for_first_page(speed)
+            autoit.send("{TAB}")
+            speed_for_first_page(speed)
+
+            selectGenderDropdown(person['gender'])
+            speed_for_first_page(speed)
+            autoit.send("{TAB}")
+
+            selectPaxDropdown(person['pax'])
+            speed_for_first_page(speed)
+            autoit.send("{TAB}")
+            speed_for_first_page(speed)
+
+            selectIdentityProofDropdown(person['idType'])
+            speed_for_first_page(speed)
+            autoit.send("{TAB}")
+            speed_for_first_page(speed)
+
+            if flag2:
+                human_typing(person['idNumber'].strip())
+            else:
+                pyperclip.copy(person['idNumber'].strip())
+                autoit.send("^v")
+            speed_for_first_page(speed)
+            autoit.send("{TAB}")
+            speed_for_first_page(speed)
+
+            if flag2:
+                human_typing(person['age'].strip())
+            else:
+                pyperclip.copy(person['age'].strip())
+                autoit.send("^v")
+            speed_for_first_page(speed)
+            time.sleep(0.25)
+            speed_for_first_page(speed)
+            autoit.send("{TAB}")
+            autoit.send("{ENTER}")
+            find_image_on_screen_using_opencv_color(FileNamePopup_image_path, 5)
+            time.sleep(0.2)
+            # pyautogui.typewrite(person['attachmentName'])
+            # autoit.send((person['attachmentName']))
+            pyperclip.copy(person['attachmentName'])
+            autoit.send("^v")
+            autoit.send("{ENTER}")
+            time.sleep(2)
+            if i == int(countOfPersons) - 1:
+                print("No Tabs")
+            else:
+                autoit.send("{TAB}")
+                autoit.send("{TAB}")
+
+   # performFunctionUntilImageIsFound(mobile_image_path,60)
+    multiplePressUsingPyAutoGUI('pagedown', 10)
+    pyautogui.click(find_image_on_screen_using_opencv_color(ContinueGreen_image_path, 120,0.95))
+    time.sleep(0.2)
+    autoit.send("{ENTER}")
+    print("Execution Ended (form filling)  At: ", getDateTime())

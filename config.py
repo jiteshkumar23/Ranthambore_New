@@ -7,17 +7,20 @@ usePluginForVisitorDetails = "No"  # "Yes" or "No"
 
 normalTypingInForm = "Yes"  # "Yes" or "No"
 
-zone = "Zone 10"
+zone = "Zone 6" # "Zone 1"
 
-current_advance = "current" # "current" , "advance"
+current_advance = "tatkal" # "current" , "advance" , "tatkal"
 
-slot = "Morning Canter" # "Morning Gypsy", "Afternoon Gypsy", "Morning Canter", "Afternoon Canter"
+slot = "Afternoon Gypsy" # "Morning Gypsy", "Afternoon Gypsy", "Morning Canter", "Afternoon Canter"
 
-mobileNumber = "9999999999"  # Mobile Number of the person booking the safari
+mobileNumber = "92698565536"  # Mobile Number of the person booking the safari
 
-indian_count = 2
-non_indian_count = 0
-student_count = 0
+indian_count = 6  # for advance and current
+non_indian_count = 0   # for advance and current
+student_count = 0     # for advance and current
+
+tatkal_indian = 2   # one of these two will always be zero
+tatkal_non_indian = 0  # one of these two will always be zero
 
 # Payment Method - "upi" or "upi_id" or "creditcard"
 paymentMethod = "upi"
@@ -33,29 +36,29 @@ cvv = "337"  # CVV for Credit Card Payment
 NameOnCard = "Raj Kumar"  # Name on the Credit Card
 
 # Details of 20 Passengers
-paxOfPerson1 = "Indian"  # "Indian" , "Foreigner"
-nameOfPerson1 = "Ashish Thakur"
+paxOfPerson1 = "Foreigner"  # "Indian" , "Foreigner"
+nameOfPerson1 = "Nicola Stiffan"
 idTypeOfPerson1 = "Passport"
-idNumberOfPerson1 = "AB123456"
+idNumberOfPerson1 = "YC2265029"
 genderOfPerson1 = "Male"  # "Male", "Female"
-ageOfPerson1 = "25"
-attachmentNameOfPerson1 = r"C:\Users\user\OneDrive\Desktop\SNN1.png"
+ageOfPerson1 = "44"
+attachmentNameOfPerson1 = r"C:\Users\user\Desktop\Photos\Photo1"
 
-paxOfPerson2 = "Indian"
-nameOfPerson2 = "Swati Thakur"
-idTypeOfPerson2 = "Aadhar Card"
-idNumberOfPerson2 = "554378987614"
+paxOfPerson2 = "Foreigner"
+nameOfPerson2 = "Jessica Gordon"
+idTypeOfPerson2 = "Passport"
+idNumberOfPerson2 = "YA9660282"
 genderOfPerson2 = "Female"
-ageOfPerson2 = "26"
-attachmentNameOfPerson2 = r"C:\Users\user\OneDrive\Desktop\SNN2.png"
+ageOfPerson2 = "34"
+attachmentNameOfPerson2 = r"C:\Users\user\Desktop\Photos\Photo2"
 
 paxOfPerson3 = "Indian"
-nameOfPerson3 = "Priya Sharma"
-idTypeOfPerson3 = "Passport"
-idNumberOfPerson3 = "DL456789"
-genderOfPerson3 = "Female"
+nameOfPerson3 = "Nitin Kalra"
+idTypeOfPerson3 = "Aadhar Card"
+idNumberOfPerson3 = "618710399125"
+genderOfPerson3 = "Male"
 ageOfPerson3 = "27"
-attachmentNameOfPerson3 = r"C:\Users\user\OneDrive\Desktop\SNN3.png"
+attachmentNameOfPerson3 = r"C:\Users\user\Desktop\Photos\Photo3"
 
 paxOfPerson4 = "Indian"
 nameOfPerson4 = "Kuldeep Sharma"
@@ -63,7 +66,7 @@ idTypeOfPerson4 = "Indian Voter Card"
 idNumberOfPerson4 = "HVV1234567"
 genderOfPerson4 = "Male"
 ageOfPerson4 = "28"
-attachmentNameOfPerson4 = r"C:\Users\user\OneDrive\Desktop\SNN4.png"
+attachmentNameOfPerson4 = r"C:\Users\user\Desktop\Photos\Photo4"
 
 paxOfPerson5 = "Indian"
 nameOfPerson5 = "Anandi Sharma"
@@ -71,7 +74,7 @@ idTypeOfPerson5 = "Passport"
 idNumberOfPerson5 = "PAN123456"
 genderOfPerson5 = "Female"
 ageOfPerson5 = "29"
-attachmentNameOfPerson5 = r"C:\Users\user\OneDrive\Desktop\SNN5.png"
+attachmentNameOfPerson5 = r"C:\Users\user\Desktop\Photos\Photo5"
 
 paxOfPerson6 = "Indian"
 nameOfPerson6 = "Rinki Thakur"
@@ -79,7 +82,7 @@ idTypeOfPerson6 = "Aadhar Card"
 idNumberOfPerson6 = "554378987615"
 genderOfPerson6 = "Female"
 ageOfPerson6 = "30"
-attachmentNameOfPerson6 = r"C:\Users\user\OneDrive\Desktop\SNN6.png"
+attachmentNameOfPerson6 = r"C:\Users\user\Desktop\Photos\Photo6"
 
 paxOfPerson7 = "Foreigner"
 nameOfPerson7 = "David Blue"
