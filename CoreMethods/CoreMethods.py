@@ -107,7 +107,7 @@ def fillPage1():
     if dateClick.lower() == "yes":
         pyautogui.click(find_image_on_screen_using_opencv(date_image_path,6,0.95))
     time.sleep(0.75)
-    multiplePressUsingPyAutoGUI('pagedown', 1)
+    multiplePressUsingPyAutoGUI('down', 3)
     time.sleep(0.5)
     # find_image_on_screen_using_opencv(BookNow_image_path, 10)
     # location = find_image_on_screen_using_opencv(zone1_image_path, 10)
