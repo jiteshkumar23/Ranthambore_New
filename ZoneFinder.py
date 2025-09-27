@@ -1,55 +1,54 @@
 import pyautogui
 import time
-import sys
-import random
-import os
 from pyautogui import ImageNotFoundException
 
-zone_image_path = None
+from config import machine
 
-# ⚡ Turbo human-like scroll
-def human_scroll_wheel(total_scroll=-300, min_step=-120, max_step=-80):
-    scrolled = 0
-    while abs(scrolled) < abs(total_scroll):
-        step = random.randint(min_step, max_step)
-        pyautogui.scroll(step)
-        scrolled += step
-        time.sleep(random.uniform(0.01, 0.03))  # Ultra-fast pause
 
-# 🔍 Scroll and search for zone image
-def find_zone_with_scroll(image_path, scrolls=12, scroll_amount=-300):
-    location = None
-    time.sleep(1)  # Quick startup
-    for i in range(scrolls):
+# 🔍 Locate zone using arrow keys only
+def find_zone_with_arrow_keys(image_path, max_attempts=60, direction='down', presses_per_attempt=3):
+    for attempt in range(max_attempts):
         try:
-            location = pyautogui.locateOnScreen(image_path, confidence=0.7)
+            location = pyautogui.locateOnScreen(image_path, confidence=0.8)
             if location:
                 print(f"✅ Found zone image at {location}")
+                multiplePressUsingPyAutoGUINew('down', 5)
+                location = pyautogui.locateOnScreen(image_path, confidence=0.8)
                 return location
         except ImageNotFoundException:
             pass
 
-        human_scroll_wheel(total_scroll=scroll_amount)
+        print(f"🔄 Attempt {attempt+1}: Pressing {direction} {presses_per_attempt} times")
+        pyautogui.press(direction, presses=presses_per_attempt)
+        time.sleep(0.05)  # Let UI settle
 
-    print(f"❌ Zone image '{image_path}' not found after scrolling.")
+    print(f"❌ Zone image '{image_path}' not found after {max_attempts} arrow key attempts.")
     return None
 
-def clickOnBookNowForZone(Zone_image_path,BookNow_image_path):
-    # 🚀 Step 1: Locate Zone 10
-    location = find_zone_with_scroll(Zone_image_path,)
+# 🎯 Locate and click Book Now button near the zone
+def clickOnBookNowForZone(Zone_image_path, BookNow_image_path):
+    location = find_zone_with_arrow_keys(Zone_image_path, direction='down')
 
-    # 🎯 Step 2: Define region to the right and search for Book Now
     if location:
         x, y, w, h = location
 
-        # Define region to the right with vertical padding ±100px
-        search_region = (
-            int(x + w + 30),  # Right of label
-            int(y - 100),  # 100px above
-            int(800),  # Width of region
-            int(h + 200)  # Height: ±100px
-        )
+        if machine == 'laptop':
+            search_region = (
+                int(x),  # Slightly left of the zone block
+                int(y),  # Extend upward to catch misaligned buttons
+                700,  # Wider area to the right
+                int(h + 200)  # Taller area below the zone block
+            )
+        elif machine == 'desktop':
+            search_region = (
+                int(x),  # Slightly left of the zone block
+                int(y),  # Extend upward to catch misaligned buttons
+                700,  # Wider area to the right
+                int(h + 200)  # Taller area below the zone block
+            )
 
+        time.sleep(0.25)
+        pyautogui.screenshot(region=search_region).save("book_button_area.png")
         print(f"🔍 Searching for Book Now in region: {search_region}")
 
         try:
@@ -57,10 +56,14 @@ def clickOnBookNowForZone(Zone_image_path,BookNow_image_path):
             if book_button:
                 pyautogui.click(pyautogui.center(book_button))
                 print("✅ Clicked Book Now button.")
-                return "success"  # Exit after successful click
+                return "success"
             else:
                 print("❌ Book Now button not found in the defined region.")
         except ImageNotFoundException:
             print("⚠️ ImageNotFoundException: Book Now button not detected.")
     else:
         print("⚠️ Zone image not found. Skipping button search.")
+
+def multiplePressUsingPyAutoGUINew(key, times):
+    print("pressing " + " " + key + " " + str(times))
+    pyautogui.press(key, presses=times)

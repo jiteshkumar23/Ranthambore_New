@@ -17,7 +17,7 @@ import pyperclip
 from pyautogui import moveTo
 
 from ScrollTillYouFindImage import scrollTillYouFindImage, scrollTillYouFindImageAndClick
-from ZoneFinder import find_zone_with_scroll, clickOnBookNowForZone
+from ZoneFinder import find_zone_with_arrow_keys, clickOnBookNowForZone
 from config import delay_correct, paxOfPerson1, machine, nameOfPerson1, \
     idTypeOfPerson1, idNumberOfPerson1, genderOfPerson1, paxOfPerson2, nameOfPerson2, idTypeOfPerson2, \
     idNumberOfPerson2, genderOfPerson2, paxOfPerson3, nameOfPerson3, idTypeOfPerson3, \
