@@ -299,7 +299,7 @@ def fillVisitorDetails():
             pyperclip.copy(person['attachmentName'])
             autoit.send("^v")
             autoit.send("{ENTER}")
-            time.sleep(2)
+            time.sleep(2.5)
             if i == int(countOfPersons) - 1:
                 print("No Tabs")
             else:
