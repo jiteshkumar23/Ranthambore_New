@@ -136,45 +136,21 @@ def fillPage1():
 
 def fillPage2():
     print("Hello, this is Page 2")
-    find_image_on_screen_using_opencv(PleaseSelect_image_path, 20)
-    if current_advance == "current":
-        print("Current is selected")
-        if slot.lower() == "morning gypsy":
-            pyautogui.click(find_image_on_screen_using_opencv(current_morning_gypsy_image_path, 6))
-        elif slot.lower() == "afternoon gypsy":
-            pyautogui.click(find_image_on_screen_using_opencv(current_afternoon_gypsy_image_path, 6))
-        elif slot.lower() == "morning canter":
-            pyautogui.click(find_image_on_screen_using_opencv(current_morning_canter_image_path, 6))
-        elif slot.lower() == "afternoon canter":
-            pyautogui.click(find_image_on_screen_using_opencv(current_afternoon_canter_image_path, 6))
-
-    elif current_advance == "advance":
-        print("Advance is selected")
-        if slot.lower() == "morning gypsy":
-            pyautogui.click(find_image_on_screen_using_opencv(advance_morning_gypsy_image_path, 6))
-        elif slot.lower() == "afternoon gypsy":
-            pyautogui.click(find_image_on_screen_using_opencv(advance_afternoon_gypsy_image_path, 6))
-        elif slot.lower() == "morning canter":
-            pyautogui.click(find_image_on_screen_using_opencv(advance_morning_canter_image_path, 6))
-        elif slot.lower() == "afternoon canter":
-            pyautogui.click(find_image_on_screen_using_opencv(advance_afternoon_canter_image_path, 6))
-
-    elif current_advance == "tatkal":
+    # find_image_on_screen_using_opencv(PleaseSelect_image_path, 20)
+    image_path = get_image_path(current_advance, slot)
+    press_enter_until_click(image_path)
+    if current_advance == "tatkal":
         print("Tatkal is selected")
         total_tatkal_count = tatkal_indian + tatkal_non_indian
         print(f"total_tatkal_count is {total_tatkal_count}")
         print(f"tatkal_indian is {tatkal_indian}")
         print(f"tatkal_non_indian is {tatkal_non_indian}")
-        if slot.lower() == "morning gypsy":
-            pyautogui.click(find_image_on_screen_using_opencv(tatkal_morning_gypsy_image_path, 6))
-        elif slot.lower() == "afternoon gypsy":
-            pyautogui.click(find_image_on_screen_using_opencv(tatkal_afternoon_gypsy_image_path, 6))
-
     time.sleep(1)
     pyautogui.click(find_image_on_screen_using_opencv(AvailableSeats_image_path, 6))
     time.sleep(0.4)
     multiplePressUsingPyAutoGUI('tab',2)
     if current_advance == "tatkal" :
+
         if tatkal_indian > 0:
             multiplePressUsingPyAutoGUI('backspace', 1)
             time.sleep(0.2)
@@ -1470,3 +1446,47 @@ def clickClose():
     pyautogui.click(find_image_on_screen_using_opencv_color(CloseAfterForm_image_path, 3, 0.7))
     time.sleep(0.2)
     autoit.send("{ENTER}")
+
+
+def press_enter_until_click(image_path):
+    while True:
+        location = find_image_on_screen_using_opencv(image_path, 0.5, 0.8)
+        if location:
+            pyautogui.click(location)
+            print(f"Clicked on image: {image_path}")
+            break
+        autoit.send("{ENTER}")
+        print('pressed enter')
+        time.sleep(0.2)
+
+def get_image_path(current_advance, slot):
+    slot = slot.lower()
+    if current_advance == "current":
+        print("Current is selected")
+        if slot == "morning gypsy":
+            return current_morning_gypsy_image_path
+        elif slot == "afternoon gypsy":
+            return current_afternoon_gypsy_image_path
+        elif slot == "morning canter":
+            return current_morning_canter_image_path
+        elif slot == "afternoon canter":
+            return current_afternoon_canter_image_path
+
+    elif current_advance == "advance":
+        print("Advance is selected")
+        if slot == "morning gypsy":
+            return advance_morning_gypsy_image_path
+        elif slot == "afternoon gypsy":
+            return advance_afternoon_gypsy_image_path
+        elif slot == "morning canter":
+            return advance_morning_canter_image_path
+        elif slot == "afternoon canter":
+            return advance_afternoon_canter_image_path
+
+    elif current_advance == "tatkal":
+        if slot == "morning gypsy":
+            return tatkal_morning_gypsy_image_path
+        elif slot == "afternoon gypsy":
+            return tatkal_afternoon_gypsy_image_path
+
+    return None  # fallback if no match
