@@ -1450,7 +1450,7 @@ def clickClose():
 
 def press_enter_until_click(image_path):
     while True:
-        location = find_image_on_screen_using_opencv(image_path, 0.5, 0.8)
+        location = find_image_on_screen_using_opencv(image_path, 0.5, 0.98)
         if location:
             pyautogui.click(location)
             print(f"Clicked on image: {image_path}")
