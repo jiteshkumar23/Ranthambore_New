@@ -1449,9 +1449,19 @@ def clickClose():
 
 
 def press_enter_until_click(image_path):
+    find_image_on_screen_using_opencv(AvailableSeats_image_path, 30)
+    time.sleep(0.25)
+    global percentMatch
+    if current_advance == "tatkal":
+        percentMatch = 0.90
+    elif current_advance == "current":
+        percentMatch = 0.98
+    else:
+        percentMatch = 0.8
     while True:
-        location = find_image_on_screen_using_opencv(image_path, 0.5, 0.98)
+        location = find_image_on_screen_using_opencv(image_path, 0.75, percentMatch )
         if location:
+            time.sleep(0.2)
             pyautogui.click(location)
             print(f"Clicked on image: {image_path}")
             break
