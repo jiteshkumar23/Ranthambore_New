@@ -4,7 +4,7 @@ import time
 import keyboard
 
 from CoreMethods.CoreMethods import (debounce_key, setImagePath, fillPage1, fillPage2, Payment,
-                                     fillVisitorDetails, mobile, paymentFinal, fillVisitorDetailsForTatkal, clickClose,
+                                     fillVisitorDetails, mobile, paymentFinal, fillVisitorDetailsForTatkal, clickClose
                                      )
 from config import current_advance
 

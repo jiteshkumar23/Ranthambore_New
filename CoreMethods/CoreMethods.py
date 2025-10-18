@@ -70,7 +70,7 @@ global image_directory, MorningGypsy_image_path,PleaseSelect_image_path, \
     advance_morning_gypsy_image_path,advance_afternoon_gypsy_image_path,advance_morning_canter_image_path,\
     advance_afternoon_canter_image_path,AgreeAndContinue_image_path,close_image_path,ContinueOnEmail_image_path,\
     pay_after_mobile_image_path,Proceed_to_pay_image_path,tatkal_morning_gypsy_image_path,\
-    tatkal_afternoon_gypsy_image_path,Add_Another_image_path,CloseAfterForm_image_path
+    tatkal_afternoon_gypsy_image_path,Add_Another_image_path,CloseAfterForm_image_path,cancel_after_mobile_image_path
 
 
 timeStart1, timeEnd1, timer1 = '0:0:0.0', '0:0:0.0', timer
@@ -317,12 +317,17 @@ def mobile():
     pyautogui.click(find_image_on_screen_using_opencv(mobile_image_path, 10))
     # autoit.send(mobileNumber)
     human_typing(mobileNumber)
-    time.sleep(0.2)
-    autoit.send("{TAB}")
-    time.sleep(0.2)
-    autoit.send("{ENTER}")
-    pyautogui.click(find_image_on_screen_using_opencv(pay_after_mobile_image_path, 10))
+    # time.sleep(0.2)
+    # autoit.send("{TAB}")
+    # time.sleep(0.2)
+    # autoit.send("{ENTER}")
+    # pyautogui.click(find_image_on_screen_using_opencv(cancel_after_mobile_image_path, 5))
+    # pyautogui.click(find_image_on_screen_using_opencv(pay_after_mobile_image_path, 10))
     # pyautogui.click(find_image_on_screen_using_opencv_color(PayAfterMobile_image_path, 60,0.95))
+
+# def mobile2():
+#     pyautogui.click(find_image_on_screen_using_opencv(cancel_after_mobile_image_path, 5))
+#     pyautogui.click(find_image_on_screen_using_opencv(pay_after_mobile_image_path, 10))
 
 
 def paymentFinal():
@@ -872,6 +877,9 @@ def setImagePath():
 
     global CloseAfterForm_image_path
     CloseAfterForm_image_path = os.path.join(image_directory, 'CloseAfterForm.png')
+
+    global cancel_after_mobile_image_path
+    cancel_after_mobile_image_path = os.path.join(image_directory, 'cancel_after_mobile_image.png')
 
 def days_difference_with_checkInDate(checkOutDate1):
     # Define the dates
