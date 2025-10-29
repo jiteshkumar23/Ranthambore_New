@@ -51,10 +51,10 @@ from config import delay_correct, paxOfPerson1, machine, nameOfPerson1, \
     mobileNumber, paymentMethod, UPI_ADDRESS, usePluginForVisitorDetails, normalTypingInForm, card_number, mmyy, cvv, \
     NameOnCard, current_advance, student_count, emailAddress, tatkal_indian, tatkal_non_indian, dateClick
 
-global image_directory, MorningGypsy_image_path,PleaseSelect_image_path, \
-    MorningCanter_image_path,PayButton_image_path,instructions_image_path,agree_image_path,\
-    Visitor1_image_path,OK_image_path,ContinueGreen_image_path,mobile_image_path,PayAfterMobile_image_path,\
-    SelectPaymentOption_image_path,UPI_image_path, \
+global image_directory, MorningGypsy_image_path, PleaseSelect_image_path, \
+    MorningCanter_image_path, PayButton_image_path, instructions_image_path, agree_image_path, \
+    Visitor1_image_path, OK_image_path, ContinueGreen_image_path, mobile_image_path, PayAfterMobile_image_path, \
+    SelectPaymentOption_image_path, UPI_image_path, \
     PayNow_image_path, email_image_path, \
     continue_image_path, contactdetails_image_path, showQR_image_path, \
     recommended_image_path, creditcard_image_path, payViaCard_image_path, \
@@ -63,15 +63,14 @@ global image_directory, MorningGypsy_image_path,PleaseSelect_image_path, \
     showQR_AfterTiger_image_path, UPI_ID_image_path, UPI_ID_Image2_image_path, gender_dropdown_image_path, \
     id_details_image_path, age_image_path, fullname_image_path, \
     id_proof_not_selected_image_path, emailAddress_image_path, emailAddress_2_image_path, \
-    UPIOnRazorPay_image_path,FileNamePopup_image_path,tiger_image_path,AvailableSeats_image_path, \
-    Zone1_image_path, Zone2_image_path, Zone3_image_path, Zone4_image_path, Zone5_image_path, Zone6_image_path, \
+    UPIOnRazorPay_image_path, FileNamePopup_image_path, tiger_image_path, AvailableSeats_image_path, \
     Zone7_image_path, Zone8_image_path, Zone9_image_path, Zone10_image_path,current_morning_gypsy_image_path,\
     current_afternoon_gypsy_image_path,current_morning_canter_image_path,current_afternoon_canter_image_path,\
     advance_morning_gypsy_image_path,advance_afternoon_gypsy_image_path,advance_morning_canter_image_path,\
     advance_afternoon_canter_image_path,AgreeAndContinue_image_path,close_image_path,ContinueOnEmail_image_path,\
     pay_after_mobile_image_path,Proceed_to_pay_image_path,tatkal_morning_gypsy_image_path,\
-    tatkal_afternoon_gypsy_image_path,Add_Another_image_path,CloseAfterForm_image_path,cancel_after_mobile_image_path
-
+    tatkal_afternoon_gypsy_image_path,Add_Another_image_path,CloseAfterForm_image_path,cancel_after_mobile_image_path,\
+    enter_upi_id_image_path
 
 timeStart1, timeEnd1, timer1 = '0:0:0.0', '0:0:0.0', timer
 timeStart2, timeEnd2, timer2 = '0:0:0.0', '0:0:0.0', timer
@@ -105,55 +104,59 @@ def fillPage1():
     # pyautogui.press('i')
     # pyautogui.keyUp('alt')
     if dateClick.lower() == "yes":
-        pyautogui.click(find_image_on_screen_using_opencv(date_image_path,6,0.95))
+        pyautogui.click(find_image_on_screen_using_opencv(date_image_path, 6, 0.95))
     time.sleep(0.75)
     multiplePressUsingPyAutoGUI('down', 3)
     time.sleep(0.5)
     # find_image_on_screen_using_opencv(BookNow_image_path, 10)
     # location = find_image_on_screen_using_opencv(zone1_image_path, 10)
     if zone == "Zone 1":
-        clickOnBookNowForZone(Zone1_image_path,BookNow_image_path)
+        clickOnBookNowForZone(Zone1_image_path, BookNow_image_path)
     elif zone == "Zone 2":
-        clickOnBookNowForZone(Zone2_image_path,BookNow_image_path)
+        clickOnBookNowForZone(Zone2_image_path, BookNow_image_path)
     elif zone == "Zone 3":
-        clickOnBookNowForZone(Zone3_image_path,BookNow_image_path)
+        clickOnBookNowForZone(Zone3_image_path, BookNow_image_path)
     elif zone == "Zone 4":
-        clickOnBookNowForZone(Zone4_image_path,BookNow_image_path)
+        clickOnBookNowForZone(Zone4_image_path, BookNow_image_path)
     elif zone == "Zone 5":
-        clickOnBookNowForZone(Zone5_image_path,BookNow_image_path)
+        clickOnBookNowForZone(Zone5_image_path, BookNow_image_path)
     elif zone == "Zone 6":
-        clickOnBookNowForZone(Zone6_image_path,BookNow_image_path)
+        clickOnBookNowForZone(Zone6_image_path, BookNow_image_path)
     elif zone == "Zone 7":
-        clickOnBookNowForZone(Zone7_image_path,BookNow_image_path)
+        clickOnBookNowForZone(Zone7_image_path, BookNow_image_path)
     elif zone == "Zone 8":
-        clickOnBookNowForZone(Zone8_image_path,BookNow_image_path)
+        clickOnBookNowForZone(Zone8_image_path, BookNow_image_path)
     elif zone == "Zone 9":
-        clickOnBookNowForZone(Zone9_image_path,BookNow_image_path)
+        clickOnBookNowForZone(Zone9_image_path, BookNow_image_path)
     elif zone == "Zone 10":
-        clickOnBookNowForZone(Zone10_image_path,BookNow_image_path)
+        clickOnBookNowForZone(Zone10_image_path, BookNow_image_path)
     else:
         print("⚠️ Unknown zone label. Please check the input.")
+
 
 def fillPage2():
     print("Hello, this is Page 2")
     # find_image_on_screen_using_opencv(PleaseSelect_image_path, 20)
     image_path = get_image_path(current_advance, slot)
     press_enter_until_click(image_path)
+    # click_enter_until_image_found(image_path)
+    # tab_to_section(current_advance, slot)
     if current_advance == "tatkal":
         print("Tatkal is selected")
         total_tatkal_count = tatkal_indian + tatkal_non_indian
         print(f"total_tatkal_count is {total_tatkal_count}")
         print(f"tatkal_indian is {tatkal_indian}")
         print(f"tatkal_non_indian is {tatkal_non_indian}")
-    time.sleep(1)
+    # time.sleep(1)
+    # time.sleep(0.2)
     pyautogui.click(find_image_on_screen_using_opencv(AvailableSeats_image_path, 6))
     time.sleep(0.4)
-    multiplePressUsingPyAutoGUI('tab',2)
-    if current_advance == "tatkal" :
+    multiplePressUsingPyAutoGUI('tab', 2)
+    if current_advance == "tatkal":
 
         if tatkal_indian > 0:
             multiplePressUsingPyAutoGUI('backspace', 1)
-            time.sleep(0.2)
+            time.sleep(0.25)
             pyautogui.typewrite("6")
             time.sleep(0.2)
         elif tatkal_non_indian > 0:
@@ -165,7 +168,7 @@ def fillPage2():
     else:
         if indian_count > 0:
             multiplePressUsingPyAutoGUI('backspace', 1)
-            time.sleep(0.2)
+            time.sleep(0.25)
             pyautogui.typewrite(str(indian_count))
             time.sleep(0.2)
         multiplePressUsingPyAutoGUI('tab', 1)
@@ -185,9 +188,6 @@ def fillPage2():
     autoit.send("{ENTER}")
 
 
-
-
-
 def Payment():
     pyautogui.click(find_image_on_screen_using_opencv(PayButton_image_path, 6))
     time.sleep(0.5)
@@ -195,7 +195,7 @@ def Payment():
     multiplePressUsingPyAutoGUI('pagedown', 10)
     time.sleep(0.2)
     # scrollTillYouFindImage(close_image_path)
-    pyautogui.click(find_image_on_screen_using_opencv(instructions_image_path, 6,0.6))
+    pyautogui.click(find_image_on_screen_using_opencv(instructions_image_path, 6, 0.6))
 
     # pyautogui.click(find_image_on_screen_using_opencv_color(AgreeAndContinue_image_path, 6))
     autoit.send("{TAB}")
@@ -203,7 +203,6 @@ def Payment():
     autoit.send("{ENTER}")
     # scrollTillYouFindImageAndClick(AgreeAndContinue_image_path)
     time.sleep(0.4)
-
 
 
 def fillVisitorDetails():
@@ -215,7 +214,7 @@ def fillVisitorDetails():
     for _ in range(3):
         pyautogui.press('up')
     pyautogui.click(find_image_on_screen_using_opencv(Visitor1_image_path, 10))
-    multiplePressUsingPyAutoGUI('tab',2)
+    multiplePressUsingPyAutoGUI('tab', 2)
     persons_list = get_persons_list()
     if usePluginForVisitorDetails.lower() == "yes":
         flag = True
@@ -306,12 +305,13 @@ def fillVisitorDetails():
                 autoit.send("{TAB}")
                 autoit.send("{TAB}")
 
-   # performFunctionUntilImageIsFound(mobile_image_path,60)
+    # performFunctionUntilImageIsFound(mobile_image_path,60)
     multiplePressUsingPyAutoGUI('pagedown', 10)
-    pyautogui.click(find_image_on_screen_using_opencv_color(ContinueGreen_image_path, 120,0.95))
+    pyautogui.click(find_image_on_screen_using_opencv_color(ContinueGreen_image_path, 200, 0.95))
     time.sleep(0.2)
     autoit.send("{ENTER}")
     print("Execution Ended (form filling)  At: ", getDateTime())
+
 
 def mobile():
     pyautogui.click(find_image_on_screen_using_opencv(mobile_image_path, 10))
@@ -328,7 +328,6 @@ def mobile():
 # def mobile2():
 #     pyautogui.click(find_image_on_screen_using_opencv(cancel_after_mobile_image_path, 5))
 #     pyautogui.click(find_image_on_screen_using_opencv(pay_after_mobile_image_path, 10))
-
 
 def paymentFinal():
     location = find_image_on_screen_using_opencv(SelectPaymentOption_image_path, 300)
@@ -362,23 +361,23 @@ def paymentFinal():
             time.sleep(0.2)
             location6 = find_image_on_screen_using_opencv(showQR_image_path, 10)
             print("show QR was displayed")
+            time.sleep(0.2)
             pyautogui.click(location6)
+            pyautogui.click(find_image_on_screen_using_opencv_color(PaymentOptions_image_path, 6))
         elif paymentMethod.lower() == "upi_id":
             location6 = find_image_on_screen_using_opencv(UPI_ID_image_path, 10)
             print("UPI_ID was displayed")
             pyautogui.click(location6)
             time.sleep(0.1)
-            location6 = find_image_on_screen_using_opencv(Proceed_to_pay_image_path, 10)
+            location7 = find_image_on_screen_using_opencv(enter_upi_id_image_path, 10)
+            pyautogui.click(location7)
+            pyperclip.copy(UPI_ADDRESS)
+            autoit.send("^v")
+            time.sleep(0.5)
+            location8 = find_image_on_screen_using_opencv(Proceed_to_pay_image_path, 10)
             print("UPI_ID was displayed")
-            pyautogui.click(location6)
+            pyautogui.click(location8)
             time.sleep(0.1)
-
-            # pyperclip.copy(UPI_ADDRESS)
-            # autoit.send("^v")
-            # time.sleep(0.25)
-            # autoit.send("{TAB}")
-            # time.sleep(0.1)
-            # autoit.send("{ENTER}")
     elif paymentMethod.lower() == "creditcard":
         location7 = find_image_on_screen_using_opencv(creditcard_image_path, 10)
         pyautogui.click(location7)
@@ -411,6 +410,7 @@ def paymentFinal():
         location12 = find_image_on_screen_using_opencv(ContinueOnCard_image_path, 10)
         pyautogui.click(location12)
 
+
 def printDateTime():
     print(f"Time: {datetime.datetime.now().strftime('%H:%M:%S.%f')[:-3]}")
 
@@ -436,6 +436,7 @@ def multiplePressUsingPyAutoGUI(key, times):
 
 def speed_for_first_page(speed):
     time.sleep(speed)
+
 
 def wait_for_image_and_click(image_path, timeout_duration=60, check_interval=0.001):
     timeout_end = time.time() + timeout_duration
@@ -594,13 +595,13 @@ def find_image_on_screen_using_opencv(template_path1, timeout, threshold=0.7):
         # Check if the match value is above the threshold
         if max_val >= threshold:
             # Return the location of the matched region
-            print("Image found ->"+template_path1)
+            print("Image found ->" + template_path1)
             return max_loc[0], max_loc[1], w, h
 
         # Check if the timeout has been reached
         if time.time() - start_time > timeout:
             return None
-        print("Image Searching for "+template_path1)
+        print("Image Searching for " + template_path1)
         time.sleep(0.01)
 
 
@@ -623,15 +624,16 @@ def performFunctionUntilImageIsFound(template_path1, timeout, threshold=0.7):
         # Check if the match value is above the threshold
         if max_val >= threshold:
             # Return the location of the matched region
-            print("Image found ->"+template_path1)
+            print("Image found ->" + template_path1)
             return max_loc[0], max_loc[1], w, h
 
         # Check if the timeout has been reached
         if time.time() - start_time > timeout:
             return None
-        print("Image Searching for "+template_path1)
+        print("Image Searching for " + template_path1)
         time.sleep(0.5)
         clickContinueButton()
+
 
 def clickContinueButton():
     autoit.send("!s")  # Sends Alt + S
@@ -877,9 +879,13 @@ def setImagePath():
 
     global CloseAfterForm_image_path
     CloseAfterForm_image_path = os.path.join(image_directory, 'CloseAfterForm.png')
-
+    
     global cancel_after_mobile_image_path
     cancel_after_mobile_image_path = os.path.join(image_directory, 'cancel_after_mobile_image.png')
+
+    global enter_upi_id_image_path
+    enter_upi_id_image_path = os.path.join(image_directory, 'enter_upi_id.png')
+
 
 def days_difference_with_checkInDate(checkOutDate1):
     # Define the dates
@@ -944,6 +950,7 @@ def selectIdentityProofDropdown(case_value):
         multiplePressUsingPyAutoGUI('down', 1)
         pyautogui.typewrite("indian s")
         autoit.send("{ENTER}")
+
 
 def selectGenderDropdown(case_value):
     autoit.send("{ENTER}")
@@ -1219,7 +1226,6 @@ def setTimeEndAndWaitForTimer(i):
             time.sleep(remaining_seconds)
 
 
-
 def find_image_on_screen_using_opencv_color(template_path1, timeout, threshold=0.7):
     template = cv2.imread(template_path1)  # Read in color (BGR)
     h, w, _ = template.shape
@@ -1242,6 +1248,7 @@ def find_image_on_screen_using_opencv_color(template_path1, timeout, threshold=0
             return None
         print("Color image searching for " + template_path1)
         time.sleep(0.01)
+
 
 def find_any_of_two_images_on_screen_using_opencv(template_path1, template_path2, timeout, threshold=0.7):
     template1 = cv2.imread(template_path1, 0)
@@ -1280,10 +1287,12 @@ def find_any_of_two_images_on_screen_using_opencv(template_path1, template_path2
 
         time.sleep(0.1)
 
+
 import cv2
 import numpy as np
 import pyautogui
 import time
+
 
 def is_button_enabled(image_path, expected_color_lower, expected_color_upper, sample_point_offset=(10, 10), timeout=60):
     """
@@ -1332,6 +1341,7 @@ def is_button_enabled(image_path, expected_color_lower, expected_color_upper, sa
     print("Button image not found within timeout.")
     return False
 
+
 def fillVisitorDetailsForTatkal():
     pyautogui.click(pyautogui.size().width // 2, pyautogui.size().height // 2)
     print("filling person details for Tatkal")
@@ -1344,7 +1354,7 @@ def fillVisitorDetailsForTatkal():
     for _ in range(3):
         pyautogui.press('up')
     pyautogui.click(find_image_on_screen_using_opencv(Visitor1_image_path, 10))
-    multiplePressUsingPyAutoGUI('tab',2)
+    multiplePressUsingPyAutoGUI('tab', 2)
     persons_list = get_persons_list()
     if usePluginForVisitorDetails.lower() == "yes":
         flag = True
@@ -1385,7 +1395,8 @@ def fillVisitorDetailsForTatkal():
                 for _ in range(2):
                     pyautogui.press('down')
                 time.sleep(0.1)
-                pyautogui.click(find_image_on_screen_using_opencv(Add_Another_image_path, 10,0.6))
+                pyautogui.click(find_image_on_screen_using_opencv(Add_Another_image_path,
+                                                                  10, 0.6))
                 time.sleep(0.3)
             if flag2:
                 human_typing(person['name'].strip())
@@ -1443,12 +1454,13 @@ def fillVisitorDetailsForTatkal():
             #     autoit.send("{TAB}")
             #     autoit.send("{TAB}")
 
-   # performFunctionUntilImageIsFound(mobile_image_path,60)
+    # performFunctionUntilImageIsFound(mobile_image_path,60)
     multiplePressUsingPyAutoGUI('pagedown', 10)
-    pyautogui.click(find_image_on_screen_using_opencv_color(ContinueGreen_image_path, 120,0.95))
+    pyautogui.click(find_image_on_screen_using_opencv_color(ContinueGreen_image_path, 200, 0.95))
     time.sleep(0.2)
     autoit.send("{ENTER}")
     print("Execution Ended (form filling)  At: ", getDateTime())
+
 
 def clickClose():
     pyautogui.click(find_image_on_screen_using_opencv_color(CloseAfterForm_image_path, 3, 0.7))
@@ -1465,17 +1477,40 @@ def press_enter_until_click(image_path):
     elif current_advance == "current":
         percentMatch = 0.98
     else:
-        percentMatch = 0.8
+        percentMatch = 0.95
     while True:
-        location = find_image_on_screen_using_opencv(image_path, 0.75, percentMatch )
+        location = find_image_on_screen_using_opencv_color(image_path, 0.75, percentMatch )
         if location:
-            time.sleep(0.2)
+            time.sleep(0.6)
             pyautogui.click(location)
             print(f"Clicked on image: {image_path}")
             break
         autoit.send("{ENTER}")
         print('pressed enter')
+        time.sleep(0.5)
+
+
+def click_enter_until_image_found(image_path):
+    find_image_on_screen_using_opencv(AvailableSeats_image_path, 30)
+    time.sleep(0.25)
+    global percentMatch
+    if current_advance == "tatkal":
+        percentMatch = 0.90
+    elif current_advance == "current":
+        percentMatch = 0.98
+    else:
+        percentMatch = 0.8
+    while True:
+        location = find_image_on_screen_using_opencv(image_path, 0.75, percentMatch)
+        if location:
+            time.sleep(0.2)
+            print(f"Found Image ---> : {image_path}")
+            # time.sleep(0.7)
+            break
+        autoit.send("{ENTER}")
+        print('pressed enter')
         time.sleep(0.2)
+
 
 def get_image_path(current_advance, slot):
     slot = slot.lower()
@@ -1508,3 +1543,66 @@ def get_image_path(current_advance, slot):
             return tatkal_afternoon_gypsy_image_path
 
     return None  # fallback if no match
+
+
+def tab_to_section(current_advance, slot):
+    # Normalize inputs
+    pyautogui.click(find_image_on_screen_using_opencv(AvailableSeats_image_path, 6))
+    autoit.send("{TAB}")
+    current_advance = str(current_advance).strip().lower()
+    slot = str(slot).strip().lower()
+
+    # Corrected tab order matching the screenshot (no advance canter entries)
+    tab_order = [
+        ("tatkal", "morning gypsy"),
+        ("tatkal", "afternoon gypsy"),
+
+        ("advance", "morning gypsy"),
+        ("advance", "afternoon gypsy"),
+
+        ("current", "morning canter"),
+        ("current", "afternoon canter"),
+
+        ("advance", "morning canter"),
+        ("advance", "afternoon canter"),
+
+        ("premium", "morning gypsy"),
+        ("premium", "afternoon gypsy"),
+        ("premium", "morning canter"),
+        ("premium", "afternoon canter"),
+    ]
+
+    try:
+        target_index = tab_order.index((current_advance, slot))
+    except ValueError:
+        print(f"Invalid combination: '{current_advance}' + '{slot}'")
+        return False
+    print(f"target index is {target_index}")
+    for _ in range(target_index):
+        autoit.send("{TAB}")
+    time.sleep(0.2)
+    autoit.send("{ENTER}")
+    return True
+
+def paymentFinalTesting():
+    if paymentMethod.lower() == "upi":
+        time.sleep(0.2)
+        location6 = find_image_on_screen_using_opencv(showQR_image_path, 10)
+        print("show QR was displayed")
+        time.sleep(0.2)
+        pyautogui.click(location6)
+        pyautogui.click(find_image_on_screen_using_opencv_color(PaymentOptions_image_path, 6))
+    elif paymentMethod.lower() == "upi_id":
+        location6 = find_image_on_screen_using_opencv(UPI_ID_image_path, 10)
+        print("UPI_ID was displayed")
+        pyautogui.click(location6)
+        time.sleep(0.1)
+        location7 = find_image_on_screen_using_opencv(enter_upi_id_image_path, 10)
+        pyautogui.click(location7)
+        pyperclip.copy(UPI_ADDRESS)
+        autoit.send("^v")
+        time.sleep(0.25)
+        location8 = find_image_on_screen_using_opencv(Proceed_to_pay_image_path, 10)
+        print("UPI_ID was displayed")
+        pyautogui.click(location8)
+        time.sleep(0.1)

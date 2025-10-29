@@ -1,0 +1,5 @@
+const btn = document.getElementById('payNowBtn');
+if (btn) {
+  btn.removeAttribute('disabled');
+  btn.classList.remove('disabled');
+}
