@@ -291,6 +291,7 @@ def fillVisitorDetails():
             speed_for_first_page(speed)
             autoit.send("{TAB}")
             autoit.send("{ENTER}")
+            time.sleep(0.25)
             find_image_on_screen_using_opencv_color(FileNamePopup_image_path, 5)
             time.sleep(0.2)
             # pyautogui.typewrite(person['attachmentName'])
@@ -1440,6 +1441,7 @@ def fillVisitorDetailsForTatkal():
             speed_for_first_page(speed)
             autoit.send("{TAB}")
             autoit.send("{ENTER}")
+            time.sleep(0.25)
             find_image_on_screen_using_opencv_color(FileNamePopup_image_path, 5)
             time.sleep(0.2)
             # pyautogui.typewrite(person['attachmentName'])
@@ -1463,7 +1465,7 @@ def fillVisitorDetailsForTatkal():
 
 
 def clickClose():
-    pyautogui.click(find_image_on_screen_using_opencv_color(CloseAfterForm_image_path, 3, 0.7))
+    pyautogui.click(find_image_on_screen_using_opencv_color(CloseAfterForm_image_path, 5, 0.7))
     time.sleep(0.2)
     autoit.send("{ENTER}")
 

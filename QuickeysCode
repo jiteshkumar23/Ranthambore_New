@@ -1,5 +1,10 @@
 const btn = document.getElementById('payNowBtn');
 if (btn) {
   btn.removeAttribute('disabled');
-  btn.classList.remove('disabled');
+  btn.classList.remove('disabled'); // if a CSS class is used to style disabled state
+
+  // wait 0.5 seconds then click
+  setTimeout(() => {
+    btn.click();
+  }, 500);
 }
