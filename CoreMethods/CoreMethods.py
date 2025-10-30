@@ -1481,7 +1481,7 @@ def press_enter_until_click(image_path):
     while True:
         location = find_image_on_screen_using_opencv_color(image_path, 0.75, percentMatch )
         if location:
-            time.sleep(0.6)
+            time.sleep(1)
             pyautogui.click(location)
             print(f"Clicked on image: {image_path}")
             break
