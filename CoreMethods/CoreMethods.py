@@ -261,6 +261,16 @@ def fillVisitorDetails():
             selectGenderDropdown(person['gender'])
             speed_for_first_page(speed)
             autoit.send("{TAB}")
+            speed_for_first_page(speed)
+
+            if flag2:
+                human_typing(person['age'].strip())
+            else:
+                pyperclip.copy(person['age'].strip())
+                autoit.send("^v")
+            speed_for_first_page(speed)
+
+            autoit.send("{TAB}")
 
             selectPaxDropdown(person['pax'])
             speed_for_first_page(speed)
@@ -278,15 +288,9 @@ def fillVisitorDetails():
                 pyperclip.copy(person['idNumber'].strip())
                 autoit.send("^v")
             speed_for_first_page(speed)
-            autoit.send("{TAB}")
-            speed_for_first_page(speed)
 
-            if flag2:
-                human_typing(person['age'].strip())
-            else:
-                pyperclip.copy(person['age'].strip())
-                autoit.send("^v")
-            speed_for_first_page(speed)
+
+
             time.sleep(0.25)
             speed_for_first_page(speed)
             autoit.send("{TAB}")
@@ -1393,7 +1397,7 @@ def fillVisitorDetailsForTatkal():
             if i == 0:
                 print("not clicking add another")
             else:
-                for _ in range(2):
+                for _ in range(5):
                     pyautogui.press('down')
                 time.sleep(0.1)
                 pyautogui.click(find_image_on_screen_using_opencv(Add_Another_image_path,
@@ -1410,6 +1414,17 @@ def fillVisitorDetailsForTatkal():
 
             selectGenderDropdown(person['gender'])
             speed_for_first_page(speed)
+
+            autoit.send("{TAB}")
+            speed_for_first_page(speed)
+
+            if flag2:
+                human_typing(person['age'].strip())
+            else:
+                pyperclip.copy(person['age'].strip())
+                autoit.send("^v")
+            speed_for_first_page(speed)
+
             autoit.send("{TAB}")
 
             selectPaxDropdown(person['pax'])
@@ -1428,15 +1443,7 @@ def fillVisitorDetailsForTatkal():
                 pyperclip.copy(person['idNumber'].strip())
                 autoit.send("^v")
             speed_for_first_page(speed)
-            autoit.send("{TAB}")
-            speed_for_first_page(speed)
 
-            if flag2:
-                human_typing(person['age'].strip())
-            else:
-                pyperclip.copy(person['age'].strip())
-                autoit.send("^v")
-            speed_for_first_page(speed)
             time.sleep(0.25)
             speed_for_first_page(speed)
             autoit.send("{TAB}")
